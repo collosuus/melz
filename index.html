@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melz Gümrük Müşavirliği</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0a1628;
+      --navy-mid: #112240;
+      --blue: #1a4f8a;
+      --accent: #c8922a;
+      --accent-light: #e8b44a;
+      --steel: #4a7ab5;
+      --light: #f0f4f9;
+      --white: #ffffff;
+      --text-muted: #8a9ab5;
+      --border: rgba(255,255,255,0.08);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+    /* LANG */
+    #lang-bar { position: fixed; top: 0; right: 0; z-index: 1000; display: flex; background: var(--navy-mid); border-bottom-left-radius: 8px; overflow: hidden; border: 1px solid var(--border); border-top: none; border-right: none; }
+    .lang-btn { padding: 8px 18px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; cursor: pointer; border: none; background: transparent; color: var(--text-muted); transition: all 0.2s; }
+    .lang-btn.active { background: var(--accent); color: var(--white); }
+    .lang-btn:hover:not(.active) { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; background: rgba(10,22,40,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); transition: background 0.3s; }
+    .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; color: var(--navy); }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-main { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+    .logo-sub { font-size: 10px; font-weight: 400; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent-light); }
+    .nav-cta { padding: 9px 22px; background: var(--accent); color: var(--navy) !important; border-radius: 4px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--accent-light) !important; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 100px 5% 60px; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(26,79,138,0.25) 0%, transparent 70%), radial-gradient(ellipse 40% 40% at 20% 80%, rgba(200,146,42,0.08) 0%, transparent 60%), linear-gradient(160deg, #0a1628 0%, #112240 50%, #0d1e38 100%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(74,122,181,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(74,122,181,0.06) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); }
+    .hero-globe { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 650px; height: 650px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, rgba(74,122,181,0.3) 0%, transparent 50%), radial-gradient(circle at 65% 65%, rgba(200,146,42,0.1) 0%, transparent 40%); border: 1px solid rgba(74,122,181,0.15); box-shadow: inset 0 0 120px rgba(26,79,138,0.2), 0 0 80px rgba(26,79,138,0.1); animation: globePulse 6s ease-in-out infinite; }
+    .globe-ring { position: absolute; inset: -20px; border-radius: 50%; border: 1px solid rgba(200,146,42,0.12); animation: globePulse 6s ease-in-out infinite reverse; }
+    .globe-ring-2 { position: absolute; inset: -50px; border-radius: 50%; border: 1px solid rgba(74,122,181,0.08); animation: globePulse 8s ease-in-out infinite; }
+    @keyframes globePulse { 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.03);opacity:0.8;} }
+    .globe-lines { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; opacity: 0.15; }
+    .globe-lines::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(74,122,181,0.4) 48px, rgba(74,122,181,0.4) 49px), repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(74,122,181,0.4) 48px, rgba(74,122,181,0.4) 49px); }
+    .globe-dot { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: dotBlink 2s ease-in-out infinite; }
+    .globe-dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--accent); opacity: 0.5; animation: dotRing 2s ease-in-out infinite; }
+    @keyframes dotBlink { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    @keyframes dotRing { 0%{transform:scale(1);opacity:0.5;} 100%{transform:scale(2.5);opacity:0;} }
+    .d1{top:22%;left:18%;animation-delay:0s;} .d2{top:38%;left:58%;animation-delay:0.7s;} .d3{top:60%;left:30%;animation-delay:1.4s;} .d4{top:28%;left:72%;animation-delay:0.3s;} .d5{top:72%;left:65%;animation-delay:1.1s;} .d6{top:50%;left:10%;animation-delay:1.8s;}
+    .hero-content { position: relative; z-index: 2; max-width: 620px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(200,146,42,0.12); border: 1px solid rgba(200,146,42,0.3); border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent-light); margin-bottom: 28px; animation: fadeUp 0.8s ease both; }
+    .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); display: inline-block; animation: dotBlink 1.5s infinite; }
+    .hero-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(52px, 8vw, 96px); font-weight: 800; line-height: 0.9; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 24px; animation: fadeUp 0.8s 0.1s ease both; }
+    .hero-title em { font-style: normal; color: var(--accent); display: block; }
+    .hero-desc { font-size: 17px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.65); max-width: 480px; margin-bottom: 40px; animation: fadeUp 0.8s 0.2s ease both; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.8s 0.3s ease both; }
+    .btn-primary { padding: 14px 32px; background: var(--accent); color: var(--navy); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; box-shadow: 0 4px 24px rgba(200,146,42,0.3); }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,146,42,0.4); }
+    .btn-secondary { padding: 14px 32px; background: transparent; color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* STATS */
+    .stats-bar { position: relative; z-index: 2; background: rgba(17,34,64,0.8); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); padding: 0 5%; }
+    .stats-inner { display: grid; grid-template-columns: repeat(4,1fr); max-width: 1100px; margin: 0 auto; }
+    .stat-item { padding: 32px 24px; border-right: 1px solid var(--border); text-align: center; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+
+    /* SECTIONS */
+    section { padding: 100px 5%; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px,5vw,56px); font-weight: 800; text-transform: uppercase; line-height: 1; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .section-desc { font-size: 16px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.55); max-width: 500px; margin-bottom: 60px; }
+
+    /* SERVICES */
+    #services { background: var(--navy-mid); }
+    .services-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 2px; }
+    .service-card { background: var(--navy); padding: 48px 40px; position: relative; overflow: hidden; transition: all 0.3s; }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--accent); transition: height 0.4s ease; }
+    .service-card:hover::before { height: 100%; }
+    .service-card:hover { background: rgba(26,79,138,0.12); }
+    .service-icon { width: 56px; height: 56px; background: rgba(200,146,42,0.1); border: 1px solid rgba(200,146,42,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; font-size: 26px; transition: all 0.3s; }
+    .service-card:hover .service-icon { background: rgba(200,146,42,0.2); border-color: var(--accent); }
+    .service-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 24px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 14px; text-transform: uppercase; }
+    .service-card p { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.55); }
+    .service-num { position: absolute; bottom: 24px; right: 32px; font-family: 'Barlow Condensed', sans-serif; font-size: 64px; font-weight: 800; color: rgba(255,255,255,0.03); line-height: 1; }
+
+    /* WHY */
+    #why { background: linear-gradient(160deg, var(--navy) 0%, #0d1e38 100%); }
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .why-visual { position: relative; height: 440px; }
+    .why-map-bg { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, rgba(26,79,138,0.3) 0%, transparent 70%); border: 1px solid rgba(74,122,181,0.12); border-radius: 16px; overflow: hidden; }
+    .why-map-bg::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(74,122,181,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(74,122,181,0.05) 1px, transparent 1px); background-size: 30px 30px; }
+    .route-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 16px var(--accent); animation: dotBlink 2s ease-in-out infinite; }
+    .rd1{top:30%;left:15%;} .rd2{top:45%;left:45%;animation-delay:0.5s;} .rd3{top:55%;left:72%;animation-delay:1s;} .rd4{top:20%;left:65%;animation-delay:1.5s;}
+    .route-label { position: absolute; font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 1px; color: var(--accent-light); text-transform: uppercase; }
+    .rl1{top:18%;left:8%;} .rl2{top:53%;left:38%;} .rl3{top:63%;left:68%;} .rl4{top:8%;left:60%;}
+    .why-center-badge { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--navy-mid)); border: 2px solid var(--accent); display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: 0 0 40px rgba(200,146,42,0.2); z-index: 2; text-align: center; }
+    .why-center-badge span { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--accent); text-transform: uppercase; line-height: 1.3; }
+    .why-features { display: flex; flex-direction: column; gap: 28px; }
+    .why-feat { display: flex; gap: 20px; align-items: flex-start; padding: 24px; border: 1px solid var(--border); border-radius: 8px; transition: all 0.3s; }
+    .why-feat:hover { border-color: rgba(200,146,42,0.3); background: rgba(200,146,42,0.04); }
+    .why-feat-icon { width: 44px; height: 44px; flex-shrink: 0; background: rgba(200,146,42,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .why-feat h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 6px; text-transform: uppercase; }
+    .why-feat p { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+    /* PROCESS */
+    #process { background: var(--navy-mid); }
+    .process-steps { display: grid; grid-template-columns: repeat(5,1fr); position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 32px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: 0.3; }
+    .step { text-align: center; padding: 20px 16px; }
+    .step-circle { width: 64px; height: 64px; border-radius: 50%; background: var(--navy); border: 2px solid rgba(200,146,42,0.3); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 800; color: var(--accent); position: relative; z-index: 1; transition: all 0.3s; }
+    .step:hover .step-circle { background: var(--accent); color: var(--navy); border-color: var(--accent); box-shadow: 0 0 30px rgba(200,146,42,0.4); }
+    .step h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 8px; text-transform: uppercase; }
+    .step p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    /* CONTACT */
+    #contact { background: linear-gradient(160deg, #0d1e38 0%, var(--navy) 100%); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start; }
+    .contact-item { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 28px; }
+    .contact-item-icon { width: 44px; height: 44px; flex-shrink: 0; background: rgba(200,146,42,0.1); border: 1px solid rgba(200,146,42,0.2); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .contact-item-text span { display: block; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .contact-item-text p { font-size: 15px; font-weight: 400; color: var(--white); line-height: 1.5; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
+    .form-group input, .form-group textarea, .form-group select { padding: 14px 16px; background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 6px; color: var(--white); font-family: 'Barlow', sans-serif; font-size: 15px; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); background: rgba(200,146,42,0.05); }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-group select option { background: var(--navy-mid); }
+
+    /* FOOTER */
+    footer { background: #060f1e; border-top: 1px solid var(--border); padding: 40px 5%; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-copy strong { color: var(--accent); }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* MOBILE */
+    @media(max-width:768px){
+      .nav-links{display:none;}
+      .hero-globe{display:none;}
+      .stats-inner{grid-template-columns:repeat(2,1fr);}
+      .stat-item:nth-child(2){border-right:none;}
+      .services-grid{grid-template-columns:1fr;}
+      .why-grid{grid-template-columns:1fr;}
+      .why-visual{display:none;}
+      .process-steps{grid-template-columns:1fr 1fr;}
+      .contact-grid{grid-template-columns:1fr;}
+      .footer-inner{flex-direction:column;text-align:center;}
+      section{padding:60px 5%;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Lang Bar -->
+<div id="lang-bar">
+  <button class="lang-btn active" onclick="setLang('tr')">TR</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="logo">
+    <div class="logo-icon">M</div>
+    <div class="logo-text">
+      <span class="logo-main">Melz</span>
+      <span class="logo-sub" data-tr="Gümrük Müşavirliği" data-en="Customs Consultancy">Gümrük Müşavirliği</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services" data-tr="Hizmetler" data-en="Services">Hizmetler</a></li>
+    <li><a href="#why" data-tr="Neden Melz" data-en="Why Melz">Neden Melz</a></li>
+    <li><a href="#process" data-tr="Süreç" data-en="Process">Süreç</a></li>
+    <li><a href="#contact" class="nav-cta" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-globe">
+    <div class="globe-ring"></div>
+    <div class="globe-ring-2"></div>
+    <div class="globe-lines"></div>
+    <div class="globe-dot d1"></div>
+    <div class="globe-dot d2"></div>
+    <div class="globe-dot d3"></div>
+    <div class="globe-dot d4"></div>
+    <div class="globe-dot d5"></div>
+    <div class="globe-dot d6"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span data-tr="Küresel Gümrük Çözümleri" data-en="Global Customs Solutions">Küresel Gümrük Çözümleri</span>
+    </div>
+    <h1 class="hero-title">
+      <span data-tr="Dünyanın Her Yerinden" data-en="From Every Corner">Dünyanın Her Yerinden</span>
+      <em data-tr="Hızla &amp; Güvenle" data-en="Fast &amp; Secure">Hızla &amp; Güvenle</em>
+    </h1>
+    <p class="hero-desc" data-tr="Melz Gümrük Müşavirliği olarak ithalat ve ihracat süreçlerinizi uçtan uca yönetiyor, küresel ticaretinizi kolaylaştırıyoruz. İstanbul merkezli, dünya genelinde operasyon." data-en="Melz Customs Consultancy manages your import and export processes end-to-end, facilitating your global trade. Istanbul-based, operating worldwide.">
+      Melz Gümrük Müşavirliği olarak ithalat ve ihracat süreçlerinizi uçtan uca yönetiyor, küresel ticaretinizi kolaylaştırıyoruz. İstanbul merkezli, dünya genelinde operasyon.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary" data-tr="Hemen Teklif Alın" data-en="Get a Quote">Hemen Teklif Alın</a>
+      <a href="#services" class="btn-secondary" data-tr="Hizmetlerimiz" data-en="Our Services">Hizmetlerimiz</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">15+</div>
+      <div class="stat-label" data-tr="Yıllık Deneyim" data-en="Years of Experience">Yıllık Deneyim</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">80+</div>
+      <div class="stat-label" data-tr="Ülkeyle Bağlantı" data-en="Countries Connected">Ülkeyle Bağlantı</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">500+</div>
+      <div class="stat-label" data-tr="Memnun Müşteri" data-en="Satisfied Clients">Memnun Müşteri</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label" data-tr="Kesintisiz Destek" data-en="Continuous Support">Kesintisiz Destek</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label" data-tr="Hizmetlerimiz" data-en="Our Services">Hizmetlerimiz</p>
+    <h2 class="section-title" data-tr="Eksiksiz Gümrük Çözümleri" data-en="Complete Customs Solutions">Eksiksiz Gümrük Çözümleri</h2>
+    <p class="section-desc" data-tr="İthalattan ihracata, lojistikten antrepoya kadar tüm gümrük süreçleriniz tek çatı altında." data-en="From import to export, from logistics to warehousing — all your customs processes under one roof.">İthalattan ihracata, lojistikten antrepoya kadar tüm gümrük süreçleriniz tek çatı altında.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🛃</div>
+        <h3 data-tr="Gümrük Müşavirliği" data-en="Customs Consultancy">Gümrük Müşavirliği</h3>
+        <p data-tr="Uzman kadromuzla gümrük beyannamesi hazırlama, tarife sınıflandırması, vergi hesaplama ve mevzuat danışmanlığı hizmetleri sunuyoruz. Her işlemde yasal uyumluluk ve hız garantisi." data-en="With our expert team, we provide customs declaration preparation, tariff classification, tax calculation and regulatory consulting services. Legal compliance and speed guaranteed in every transaction.">Uzman kadromuzla gümrük beyannamesi hazırlama, tarife sınıflandırması, vergi hesaplama ve mevzuat danışmanlığı hizmetleri sunuyoruz. Her işlemde yasal uyumluluk ve hız garantisi.</p>
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚢</div>
+        <h3 data-tr="Lojistik Yönetimi" data-en="Logistics Management">Lojistik Yönetimi</h3>
+        <p data-tr="Deniz, hava ve kara taşımacılığında entegre lojistik çözümler sunuyoruz. Yükünüzün dünyadan Türkiye'ye, Türkiye'den dünyaya güvenli ve zamanında ulaşması için çalışıyoruz." data-en="We provide integrated logistics solutions in sea, air and land transportation. We work to ensure your cargo reaches safely and on time from the world to Turkey and from Turkey to the world.">Deniz, hava ve kara taşımacılığında entegre lojistik çözümler sunuyoruz. Yükünüzün dünyadan Türkiye'ye, Türkiye'den dünyaya güvenli ve zamanında ulaşması için çalışıyoruz.</p>
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏭</div>
+        <h3 data-tr="Antrepo Hizmetleri" data-en="Warehousing Services">Antrepo Hizmetleri</h3>
+        <p data-tr="Gümrüklü antrepolarımızda mallarınız güvende. Elleçleme, tasnif, paketleme ve sevkiyat hazırlığı hizmetlerimizle lojistik sürecinizi hızlandırıyoruz." data-en="Your goods are safe in our bonded warehouses. We accelerate your logistics process with our handling, sorting, packaging and shipment preparation services.">Gümrüklü antrepolarımızda mallarınız güvende. Elleçleme, tasnif, paketleme ve sevkiyat hazırlığı hizmetlerimizle lojistik sürecinizi hızlandırıyoruz.</p>
+        <div class="service-num">03</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">📋</div>
+        <h3 data-tr="Ticaret Danışmanlığı" data-en="Trade Consulting">Ticaret Danışmanlığı</h3>
+        <p data-tr="Yeni pazarlara açılmak mı istiyorsunuz? İthalat/ihracat mevzuatı, serbest ticaret anlaşmaları, menşe belgelendirmesi ve ticaret finansmanı konularında stratejik danışmanlık alın." data-en="Looking to enter new markets? Get strategic consulting on import/export regulations, free trade agreements, origin certification and trade finance.">Yeni pazarlara açılmak mı istiyorsunuz? İthalat/ihracat mevzuatı, serbest ticaret anlaşmaları, menşe belgelendirmesi ve ticaret finansmanı konularında stratejik danışmanlık alın.</p>
+        <div class="service-num">04</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-visual reveal">
+        <div class="why-map-bg"></div>
+        <div class="route-dot rd1"></div>
+        <div class="route-dot rd2"></div>
+        <div class="route-dot rd3"></div>
+        <div class="route-dot rd4"></div>
+        <div class="route-label rl1" data-tr="Avrupa" data-en="Europe">Avrupa</div>
+        <div class="route-label rl2" data-tr="İstanbul" data-en="Istanbul">İstanbul</div>
+        <div class="route-label rl3" data-tr="Asya" data-en="Asia">Asya</div>
+        <div class="route-label rl4" data-tr="Kuzey Amerika" data-en="North America">Kuzey Amerika</div>
+        <div class="why-center-badge"><span>MELZ<br>HUB</span></div>
+      </div>
+      <div>
+        <p class="section-label" data-tr="Neden Melz" data-en="Why Melz">Neden Melz</p>
+        <h2 class="section-title" data-tr="Küresel Ağ, Yerel Güç" data-en="Global Network, Local Strength">Küresel Ağ, Yerel Güç</h2>
+        <div class="why-features">
+          <div class="why-feat reveal">
+            <div class="why-feat-icon">⚡</div>
+            <div>
+              <h4 data-tr="Hızlı İşlem" data-en="Fast Processing">Hızlı İşlem</h4>
+              <p data-tr="Dijital entegrasyonlarımız sayesinde gümrük işlemlerinizi sektör ortalamasının çok üzerinde bir hızla tamamlıyoruz." data-en="Thanks to our digital integrations, we complete your customs procedures at a speed far above the industry average.">Dijital entegrasyonlarımız sayesinde gümrük işlemlerinizi sektör ortalamasının çok üzerinde bir hızla tamamlıyoruz.</p>
+            </div>
+          </div>
+          <div class="why-feat reveal">
+            <div class="why-feat-icon">🔒</div>
+            <div>
+              <h4 data-tr="Tam Uyumluluk" data-en="Full Compliance">Tam Uyumluluk</h4>
+              <p data-tr="Türk gümrük mevzuatı ve uluslararası ticaret hukukunu yakından takip eden uzman ekibimiz, her işlemin yasal güvencesini sağlar." data-en="Our expert team closely following Turkish customs legislation and international trade law ensures the legal security of every transaction.">Türk gümrük mevzuatı ve uluslararası ticaret hukukunu yakından takip eden uzman ekibimiz, her işlemin yasal güvencesini sağlar.</p>
+            </div>
+          </div>
+          <div class="why-feat reveal">
+            <div class="why-feat-icon">🌐</div>
+            <div>
+              <h4 data-tr="80+ Ülke Erişimi" data-en="80+ Country Access">80+ Ülke Erişimi</h4>
+              <p data-tr="Dünyanın dört bir yanındaki acenteler ve iş ortaklarımız sayesinde küresel ticaret ağınızı genişletin." data-en="Expand your global trade network with our agents and business partners around the world.">Dünyanın dört bir yanındaki acenteler ve iş ortaklarımız sayesinde küresel ticaret ağınızı genişletin.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-inner">
+    <p class="section-label" data-tr="Nasıl Çalışıyoruz" data-en="How We Work">Nasıl Çalışıyoruz</p>
+    <h2 class="section-title" data-tr="5 Adımda Sorunsuz Gümrük" data-en="Seamless Customs in 5 Steps">5 Adımda Sorunsuz Gümrük</h2>
+    <p class="section-desc" data-tr="Başvurunuzdan teslimatınıza kadar her aşamayı şeffaf ve etkin bir şekilde yönetiyoruz." data-en="We manage every stage from your application to delivery transparently and efficiently.">Başvurunuzdan teslimatınıza kadar her aşamayı şeffaf ve etkin bir şekilde yönetiyoruz.</p>
+    <div class="process-steps">
+      <div class="step reveal"><div class="step-circle">1</div><h4 data-tr="Talep &amp; Analiz" data-en="Request &amp; Analysis">Talep &amp; Analiz</h4><p data-tr="İhtiyaçlarınızı dinler, ürün ve güzergah analizi yaparız." data-en="We listen to your needs and analyze products and routes.">İhtiyaçlarınızı dinler, ürün ve güzergah analizi yaparız.</p></div>
+      <div class="step reveal"><div class="step-circle">2</div><h4 data-tr="Belge Hazırlama" data-en="Documentation">Belge Hazırlama</h4><p data-tr="Tüm gümrük evraklarını eksiksiz hazırlıyoruz." data-en="We prepare all customs documents completely.">Tüm gümrük evraklarını eksiksiz hazırlıyoruz.</p></div>
+      <div class="step reveal"><div class="step-circle">3</div><h4 data-tr="Gümrük Bildirimi" data-en="Customs Declaration">Gümrük Bildirimi</h4><p data-tr="Dijital sistemler üzerinden hızlı ve doğru beyan." data-en="Fast and accurate declaration via digital systems.">Dijital sistemler üzerinden hızlı ve doğru beyan.</p></div>
+      <div class="step reveal"><div class="step-circle">4</div><h4 data-tr="Vergi &amp; Tasfiye" data-en="Tax &amp; Clearance">Vergi &amp; Tasfiye</h4><p data-tr="Vergi ve harç işlemleri en verimli şekilde tamamlanır." data-en="Tax and fee procedures are completed in the most efficient way.">Vergi ve harç işlemleri en verimli şekilde tamamlanır.</p></div>
+      <div class="step reveal"><div class="step-circle">5</div><h4 data-tr="Teslimat" data-en="Delivery">Teslimat</h4><p data-tr="Mallarınız güvenli ve zamanında hedefe ulaşır." data-en="Your goods reach the destination safely and on time.">Mallarınız güvenli ve zamanında hedefe ulaşır.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div>
+        <p class="section-label" data-tr="İletişim" data-en="Contact">İletişim</p>
+        <h2 class="section-title" data-tr="Birlikte Büyüyelim" data-en="Let's Grow Together">Birlikte Büyüyelim</h2>
+        <p class="section-desc" data-tr="Gümrük süreçleriniz için profesyonel destek almak üzere bize ulaşın." data-en="Contact us for professional support for your customs processes.">Gümrük süreçleriniz için profesyonel destek almak üzere bize ulaşın.</p>
+        <div class="contact-item">
+          <div class="contact-item-icon">📍</div>
+          <div class="contact-item-text">
+            <span data-tr="Adres" data-en="Address">Adres</span>
+            <p>7-8-9-10. Kısım Mah, E5 Yanyol Cad,<br>Selenium Retro 9, Daire 102, Kat: 14,<br>Bakırköy / İstanbul</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">📞</div>
+          <div class="contact-item-text">
+            <span data-tr="Telefon" data-en="Phone">Telefon</span>
+            <p><a href="tel:02125645658" style="color:var(--white);text-decoration:none;">0212 564 56 58</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-icon">🕐</div>
+          <div class="contact-item-text">
+            <span data-tr="Çalışma Saatleri" data-en="Working Hours">Çalışma Saatleri</span>
+            <p data-tr="Pazartesi – Cuma: 08:00 – 18:00" data-en="Monday – Friday: 08:00 – 18:00">Pazartesi – Cuma: 08:00 – 18:00</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-tr="Adınız" data-en="Your Name">Adınız</label>
+              <input type="text" id="ph-name" placeholder="Adınız" data-placeholder-tr="Adınız" data-placeholder-en="Your name" />
+            </div>
+            <div class="form-group">
+              <label data-tr="Şirket Adı" data-en="Company Name">Şirket Adı</label>
+              <input type="text" id="ph-company" placeholder="Şirket Adı" data-placeholder-tr="Şirket Adı" data-placeholder-en="Company Name" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-tr="Telefon / E-posta" data-en="Phone / E-mail">Telefon / E-posta</label>
+            <input type="text" id="ph-contact" placeholder="İletişim bilginiz" data-placeholder-tr="İletişim bilginiz" data-placeholder-en="Your contact info" />
+          </div>
+          <div class="form-group">
+            <label data-tr="Hizmet Türü" data-en="Service Type">Hizmet Türü</label>
+            <select id="service-select">
+              <option data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
+              <option data-tr="Gümrük Müşavirliği" data-en="Customs Consultancy">Gümrük Müşavirliği</option>
+              <option data-tr="Lojistik" data-en="Logistics">Lojistik</option>
+              <option data-tr="Antrepo" data-en="Warehousing">Antrepo</option>
+              <option data-tr="Ticaret Danışmanlığı" data-en="Trade Consulting">Ticaret Danışmanlığı</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label data-tr="Mesajınız" data-en="Your Message">Mesajınız</label>
+            <textarea id="ph-msg" placeholder="Talebinizi kısaca açıklayın..." data-placeholder-tr="Talebinizi kısaca açıklayın..." data-placeholder-en="Briefly describe your request..."></textarea>
+          </div>
+          <button class="btn-primary" id="submit-btn" style="width:100%;border:none;" data-tr="Gönder" data-en="Send" onclick="handleSubmit()">Gönder</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy">© 2025 <strong>Melz Gümrük Müşavirliği</strong>. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
+    <ul class="footer-links">
+      <li><a href="#services" data-tr="Hizmetler" data-en="Services">Hizmetler</a></li>
+      <li><a href="#why" data-tr="Hakkımızda" data-en="About">Hakkımızda</a></li>
+      <li><a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  let currentLang = 'tr';
+
+  function setLang(lang) {
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-tr]').forEach(el => {
+      const text = el.getAttribute('data-' + lang);
+      if (text) el.innerHTML = text;
+    });
+    document.querySelectorAll('[data-placeholder-tr]').forEach(el => {
+      const ph = el.getAttribute('data-placeholder-' + lang);
+      if (ph) el.placeholder = ph;
+    });
+    document.querySelectorAll('#service-select option[data-tr]').forEach(opt => {
+      const t = opt.getAttribute('data-' + lang);
+      if (t) opt.textContent = t;
+    });
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.background =
+      window.scrollY > 80 ? 'rgba(10,22,40,0.98)' : 'rgba(10,22,40,0.92)';
+  });
+
+  function handleSubmit() {
+    const msg = currentLang === 'tr'
+      ? 'Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.'
+      : 'Your message has been received. We will contact you as soon as possible.';
+    alert(msg);
+  }
+</script>
+</body>
+</html>
