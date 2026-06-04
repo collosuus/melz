@@ -33,7 +33,8 @@
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; background: rgba(10,22,40,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); transition: background 0.3s; }
     .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; color: var(--navy); }
+    .logo-icon { width: 42px; height: 42px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .logo-icon img { width: 100%; height: 100%; object-fit: contain; }
     .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
     .logo-main { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
     .logo-sub { font-size: 10px; font-weight: 400; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; }
@@ -69,6 +70,13 @@
     .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(200,146,42,0.4); }
     .btn-secondary { padding: 14px 32px; background: transparent; color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s; }
     .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PARTNERS */
+    #partners { background: rgba(255,255,255,0.04); }
+    .partners-grid { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 20px; align-items: center; justify-items: center; padding: 40px 0; }
+    .partner-card { width: 100%; max-width: 180px; min-height: 80px; display: flex; align-items: center; justify-content: center; padding: 18px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); transition: transform 0.25s ease, background 0.25s ease; }
+    .partner-card img { max-width: 100%; max-height: 58px; object-fit: contain; filter: brightness(0) invert(1); }
+    .partner-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.12); }
 
     /* STATS */
     .stats-bar { position: relative; z-index: 2; background: rgba(17,34,64,0.8); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); padding: 0 5%; }
@@ -146,8 +154,9 @@
     /* FOOTER */
     footer { background: #060f1e; border-top: 1px solid var(--border); padding: 40px 5%; }
     .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .footer-copy { font-size: 13px; color: var(--text-muted); }
+    .footer-copy { font-size: 13px; color: var(--text-muted); display: flex; align-items: center; gap: 10px; }
     .footer-copy strong { color: var(--accent); }
+    .footer-copy img { width: 28px; height: auto; filter: brightness(0) invert(1); }
     .footer-links { display: flex; gap: 24px; list-style: none; }
     .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
@@ -184,7 +193,9 @@
 <!-- NAV -->
 <nav>
   <a href="#hero" class="logo">
-    <div class="logo-icon">M</div>
+    <div class="logo-icon">
+      <img src="melz-logo-header-mobile-200x60.png" alt="Melz Logo" />
+    </div>
     <div class="logo-text">
       <span class="logo-main">Melz</span>
       <span class="logo-sub" data-tr="Gümrük Müşavirliği" data-en="Customs Consultancy">Gümrük Müşavirliği</span>
@@ -228,6 +239,20 @@
     <div class="hero-actions">
       <a href="#contact" class="btn-primary" data-tr="Hemen Teklif Alın" data-en="Get a Quote">Hemen Teklif Alın</a>
       <a href="#services" class="btn-secondary" data-tr="Hizmetlerimiz" data-en="Our Services">Hizmetlerimiz</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="section-inner">
+    <p class="section-label" data-tr="İş Ortakları" data-en="Partners">İş Ortakları</p>
+    <h2 class="section-title" data-tr="Güvenilir Markalarla Çalışıyoruz" data-en="Trusted by Leading Brands">Güvenilir Markalarla Çalışıyoruz</h2>
+    <div class="partners-grid reveal">
+      <div class="partner-card"><img src="logo1.png" alt="Partner Logo 1"></div>
+      <div class="partner-card"><img src="logo2.png" alt="Partner Logo 2"></div>
+      <div class="partner-card"><img src="logo3.png" alt="Partner Logo 3"></div>
+      <div class="partner-card"><img src="logo4.png" alt="Partner Logo 4"></div>
     </div>
   </div>
 </section>
@@ -422,7 +447,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-inner">
-    <p class="footer-copy">© 2025 <strong>Melz Gümrük Müşavirliği</strong>. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
+    <p class="footer-copy"><img src="melz-logo-header-mobile-200x60.png" alt="Melz Logo" /> © 2025 <strong>Melz Gümrük Müşavirliği</strong>. <span data-tr="Tüm hakları saklıdır." data-en="All rights reserved.">Tüm hakları saklıdır.</span></p>
     <ul class="footer-links">
       <li><a href="#services" data-tr="Hizmetler" data-en="Services">Hizmetler</a></li>
       <li><a href="#why" data-tr="Hakkımızda" data-en="About">Hakkımızda</a></li>
