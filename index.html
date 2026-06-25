@@ -3,7 +3,84 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Melz Gümrük Müşavirliği</title>
+  <title>Melz Gümrük Müşavirliği | İstanbul Bakırköy</title>
+  <meta name="description" content="İstanbul Bakırköy merkezli Melz Gümrük Müşavirliği — ithalat, ihracat ve lojistik süreçlerinizi uçtan uca yönetiyoruz. 15+ yıl deneyim, 80+ ülke bağlantısı." />
+  <link rel="canonical" href="https://www.melzgumruk.com/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/melz-logo-header-small-160x50.png" />
+  <link rel="apple-touch-icon" href="/melz-logo-header-standard-240x75.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.melzgumruk.com/" />
+  <meta property="og:title" content="Melz Gümrük Müşavirliği | İstanbul" />
+  <meta property="og:description" content="İthalat, ihracat ve lojistik süreçlerinizi uçtan uca yönetiyoruz. 15+ yıl deneyim, 80+ ülke bağlantısı." />
+  <meta property="og:image" content="https://www.melzgumruk.com/melz-logo-footer-large-500x160.png" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:locale:alternate" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Melz Gümrük Müşavirliği" />
+  <meta name="twitter:description" content="İstanbul merkezli gümrük müşavirliği ve lojistik çözümleri. 15+ yıl deneyim." />
+  <meta name="twitter:image" content="https://www.melzgumruk.com/melz-logo-footer-large-500x160.png" />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="tr" href="https://www.melzgumruk.com/" />
+  <link rel="alternate" hreflang="en" href="https://www.melzgumruk.com/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.melzgumruk.com/" />
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "ProfessionalService"],
+        "@id": "https://www.melzgumruk.com/#business",
+        "name": "Melz Gümrük Müşavirliği",
+        "description": "İstanbul Bakırköy merkezli, 15+ yıl deneyimli gümrük müşavirliği ve lojistik hizmetleri firması.",
+        "url": "https://www.melzgumruk.com",
+        "telephone": "+90-212-564-56-58",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "E5 Yanyol Cad, Selenium Retro 9, Daire 102, Kat: 14",
+          "addressLocality": "Bakırköy",
+          "addressRegion": "İstanbul",
+          "postalCode": "34144",
+          "addressCountry": "TR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.9794,
+          "longitude": 28.8573
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        "areaServed": "Worldwide",
+        "knowsAbout": ["Gümrük Müşavirliği", "İthalat", "İhracat", "Lojistik", "Antrepo"],
+        "logo": "https://www.melzgumruk.com/melz-logo-footer-large-500x160.png",
+        "image": "https://www.melzgumruk.com/melz-logo-footer-large-500x160.png",
+        "priceRange": "$$",
+        "currenciesAccepted": "TRY, USD, EUR"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.melzgumruk.com/#website",
+        "url": "https://www.melzgumruk.com",
+        "name": "Melz Gümrük Müşavirliği",
+        "inLanguage": ["tr", "en"],
+        "publisher": {"@id": "https://www.melzgumruk.com/#business"}
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -430,24 +507,25 @@
         </div>
       </div>
       <div>
-        <div class="contact-form">
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/meebapoq" method="POST">
+          <input type="hidden" name="_subject" value="Melz Gümrük — Yeni Talep" />
           <div class="form-row">
             <div class="form-group">
               <label data-tr="Adınız" data-en="Your Name">Adınız</label>
-              <input type="text" id="ph-name" placeholder="Adınız" data-placeholder-tr="Adınız" data-placeholder-en="Your name" />
+              <input type="text" id="ph-name" name="name" required placeholder="Adınız" data-placeholder-tr="Adınız" data-placeholder-en="Your name" />
             </div>
             <div class="form-group">
               <label data-tr="Şirket Adı" data-en="Company Name">Şirket Adı</label>
-              <input type="text" id="ph-company" placeholder="Şirket Adı" data-placeholder-tr="Şirket Adı" data-placeholder-en="Company Name" />
+              <input type="text" id="ph-company" name="company" placeholder="Şirket Adı" data-placeholder-tr="Şirket Adı" data-placeholder-en="Company Name" />
             </div>
           </div>
           <div class="form-group">
             <label data-tr="Telefon / E-posta" data-en="Phone / E-mail">Telefon / E-posta</label>
-            <input type="text" id="ph-contact" placeholder="İletişim bilginiz" data-placeholder-tr="İletişim bilginiz" data-placeholder-en="Your contact info" />
+            <input type="text" id="ph-contact" name="contact" required placeholder="İletişim bilginiz" data-placeholder-tr="İletişim bilginiz" data-placeholder-en="Your contact info" />
           </div>
           <div class="form-group">
             <label data-tr="Hizmet Türü" data-en="Service Type">Hizmet Türü</label>
-            <select id="service-select">
+            <select id="service-select" name="service">
               <option data-tr="Seçiniz..." data-en="Select...">Seçiniz...</option>
               <option data-tr="Gümrük Müşavirliği" data-en="Customs Consultancy">Gümrük Müşavirliği</option>
               <option data-tr="Lojistik" data-en="Logistics">Lojistik</option>
@@ -457,10 +535,11 @@
           </div>
           <div class="form-group">
             <label data-tr="Mesajınız" data-en="Your Message">Mesajınız</label>
-            <textarea id="ph-msg" placeholder="Talebinizi kısaca açıklayın..." data-placeholder-tr="Talebinizi kısaca açıklayın..." data-placeholder-en="Briefly describe your request..."></textarea>
+            <textarea id="ph-msg" name="message" required placeholder="Talebinizi kısaca açıklayın..." data-placeholder-tr="Talebinizi kısaca açıklayın..." data-placeholder-en="Briefly describe your request..."></textarea>
           </div>
-          <button class="btn-primary" id="submit-btn" style="width:100%;border:none;" data-tr="Gönder" data-en="Send" onclick="handleSubmit()">Gönder</button>
-        </div>
+          <button type="submit" class="btn-primary" id="submit-btn" style="width:100%;border:none;" data-tr="Gönder" data-en="Send">Gönder</button>
+          <div id="form-status" style="display:none;margin-top:14px;padding:14px 18px;border-radius:6px;font-size:14px;font-weight:500;text-align:center;"></div>
+        </form>
       </div>
     </div>
   </div>
@@ -481,10 +560,17 @@
 <script>
   let currentLang = 'tr';
 
+  const metaDescriptions = {
+    tr: 'İstanbul Bakırköy merkezli Melz Gümrük Müşavirliği — ithalat, ihracat ve lojistik süreçlerinizi uçtan uca yönetiyoruz. 15+ yıl deneyim, 80+ ülke bağlantısı.',
+    en: 'Melz Customs Consultancy, Istanbul — end-to-end import, export and logistics management. 15+ years of experience, connected to 80+ countries.'
+  };
+
   function setLang(lang) {
     currentLang = lang;
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', metaDescriptions[lang]);
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-tr]').forEach(el => {
       const text = el.getAttribute('data-' + lang);
@@ -517,12 +603,47 @@
       window.scrollY > 80 ? 'rgba(10,22,40,0.98)' : 'rgba(10,22,40,0.92)';
   });
 
-  function handleSubmit() {
-    const msg = currentLang === 'tr'
-      ? 'Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.'
-      : 'Your message has been received. We will contact you as soon as possible.';
-    alert(msg);
-  }
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    const status = document.getElementById('form-status');
+    const isEn = currentLang === 'en';
+
+    btn.disabled = true;
+    btn.textContent = isEn ? 'Sending...' : 'Gönderiliyor...';
+
+    try {
+      const res = await fetch('https://formspree.io/f/meebapoq', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(this)
+      });
+
+      if (res.ok) {
+        status.style.display = 'block';
+        status.style.background = 'rgba(52,168,83,0.15)';
+        status.style.border = '1px solid rgba(52,168,83,0.4)';
+        status.style.color = '#4caf50';
+        status.textContent = isEn
+          ? 'Your message has been received. We will contact you as soon as possible.'
+          : 'Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.';
+        this.reset();
+      } else {
+        throw new Error('server error');
+      }
+    } catch {
+      status.style.display = 'block';
+      status.style.background = 'rgba(192,57,43,0.15)';
+      status.style.border = '1px solid rgba(192,57,43,0.4)';
+      status.style.color = '#e74c3c';
+      status.textContent = isEn
+        ? 'An error occurred. Please try again or call us directly.'
+        : 'Bir hata oluştu. Lütfen tekrar deneyin veya bizi arayın.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = isEn ? 'Send' : 'Gönder';
+    }
+  });
 </script>
 <script>
   (function(){
