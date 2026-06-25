@@ -76,6 +76,18 @@
         "name": "Melz Gümrük Müşavirliği",
         "inLanguage": ["tr", "en"],
         "publisher": {"@id": "https://www.melzgumruk.com/#business"}
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.melzgumruk.com/#faq",
+        "mainEntity": [
+          {"@type":"Question","name":"GTİP kodu nedir ve neden önemlidir?","acceptedAnswer":{"@type":"Answer","text":"GTİP (Gümrük Tarife İstatistik Pozisyonu), her ürünün uluslararası alanda tanımlandığı 12 haneli bir numaradır. İthalat ve ihracatta uygulanacak vergi oranı, yasak ve kısıtlamalar bu koda göre belirlenir. Yanlış sınıflandırma cezai yaptırım ve gümrük kıymet tarhiyatına yol açabilir."}},
+          {"@type":"Question","name":"Gümrük işlemleri ne kadar sürer?","acceptedAnswer":{"@type":"Answer","text":"Belgelerin eksiksiz olması ve yeşil hat uygulaması durumunda aynı gün gümrükleme mümkündür. Muayene gerektiren işlemlerde 1-3 iş günü öngörülmektedir."}},
+          {"@type":"Question","name":"Gümrük vergisi nasıl hesaplanır?","acceptedAnswer":{"@type":"Answer","text":"Gümrük vergisi, ürünün CIF değeri üzerinden GTİP koduna göre belirlenen oran ile hesaplanır. Buna ek olarak KDV (%20), varsa ÖTV ve diğer harçlar uygulanır. Serbest ticaret anlaşmaları kapsamında tercihli tarife uygulanabilir."}},
+          {"@type":"Question","name":"İthalatta hangi belgeler gerekir?","acceptedAnswer":{"@type":"Answer","text":"Temel belgeler: ticari fatura, çeki listesi, konşimento veya airway bill, menşe şahadetnamesi. Ürüne göre ek belgeler gerekebilir: CE belgesi, gıda analiz raporu, ithal lisansı."}},
+          {"@type":"Question","name":"Antrepo rejiminin avantajı nedir?","acceptedAnswer":{"@type":"Answer","text":"Antrepo rejimi, ithal edilen malların gümrük vergileri ödenmeksizin belirlenen süre boyunca gümrüklü antrepoda bekletilmesine olanak tanır. Azami 3 yıl süreyle kullanılabilir."}},
+          {"@type":"Question","name":"Gümrükte takılan yük için ne yapılır?","acceptedAnswer":{"@type":"Answer","text":"İlk adım takılma nedenini tespit etmektir: belge eksikliği, GTİP ihtilafı veya değer kıymet sorunu. Melz uzmanları sorunun kaynağını hızla tespit ederek çözüm sürecini başlatır. Hemen arayın: 0212 564 56 58."}}
+        ]
       }
     ]
   }
@@ -251,6 +263,56 @@
     .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
 
+    /* TESTIMONIALS */
+    #testimonials { background: var(--navy-mid); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .testimonial-card { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; padding: 32px 28px; position: relative; transition: border-color 0.3s; }
+    .testimonial-card:hover { border-color: rgba(200,146,42,0.3); }
+    .testimonial-card::before { content: '\201C'; font-family: Georgia, serif; font-size: 80px; color: var(--accent); opacity: 0.2; position: absolute; top: 8px; left: 20px; line-height: 1; }
+    .testimonial-text { font-size: 15px; font-weight: 300; line-height: 1.75; color: rgba(255,255,255,0.7); margin-bottom: 24px; padding-top: 24px; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--accent)); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 18px; color: var(--white); flex-shrink: 0; }
+    .testimonial-info strong { display: block; font-size: 14px; font-weight: 600; color: var(--white); }
+    .testimonial-info span { font-size: 12px; color: var(--text-muted); letter-spacing: 0.5px; }
+    .stars { color: var(--accent); font-size: 13px; margin-bottom: 12px; letter-spacing: 2px; }
+
+    /* TRUST */
+    #trust { background: var(--navy); padding: 60px 5%; }
+    .trust-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+    .trust-label { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 32px; }
+    .trust-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .trust-badge { border: 1px solid var(--border); border-radius: 10px; padding: 24px 16px; text-align: center; transition: border-color 0.3s, background 0.3s; }
+    .trust-badge:hover { border-color: rgba(200,146,42,0.3); background: rgba(200,146,42,0.04); }
+    .trust-badge-icon { font-size: 28px; margin-bottom: 10px; }
+    .trust-badge-title { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: var(--white); margin-bottom: 4px; }
+    .trust-badge-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* BLOG */
+    #blog { background: var(--navy-mid); }
+    .blog-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .blog-card { background: var(--navy); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-4px); border-color: rgba(200,146,42,0.3); }
+    .blog-card-header { padding: 24px 24px 0; }
+    .blog-tag { display: inline-block; padding: 4px 12px; background: rgba(200,146,42,0.12); border: 1px solid rgba(200,146,42,0.2); border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+    .blog-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; line-height: 1.2; margin-bottom: 12px; color: var(--white); }
+    .blog-card p { font-size: 14px; font-weight: 300; line-height: 1.65; color: rgba(255,255,255,0.55); padding: 0 24px; flex: 1; }
+    .blog-card-footer { padding: 20px 24px; border-top: 1px solid var(--border); margin-top: 20px; display: flex; align-items: center; justify-content: space-between; }
+    .blog-date { font-size: 12px; color: var(--text-muted); }
+    .blog-read-more { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); text-decoration: none; transition: color 0.2s; }
+    .blog-read-more:hover { color: var(--accent-light); }
+
+    /* FAQ */
+    #faq { background: var(--navy); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 60px; align-items: start; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; text-align: left; background: none; border: none; padding: 20px 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .faq-q span { font-family: 'Barlow Condensed', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); text-transform: uppercase; letter-spacing: 0.3px; text-align: left; line-height: 1.3; }
+    .faq-icon { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(200,146,42,0.3); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 18px; flex-shrink: 0; transition: all 0.3s; }
+    .faq-item.open .faq-icon { background: var(--accent); color: var(--navy); border-color: var(--accent); transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; }
+    .faq-a p { font-size: 15px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.6); padding-bottom: 20px; }
+    .faq-item.open .faq-a { max-height: 300px; }
+
     /* ANIMATIONS */
     @keyframes fadeUp { from{opacity:0;transform:translateY(24px);} to{opacity:1;transform:translateY(0);} }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -271,6 +333,10 @@
       .contact-grid{grid-template-columns:1fr;}
       .footer-inner{flex-direction:column;text-align:center;}
       section{padding:60px 5%;}
+      .testimonials-grid{grid-template-columns:1fr;}
+      .trust-grid{grid-template-columns:repeat(2,1fr);}
+      .blog-grid{grid-template-columns:1fr;}
+      .faq-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -296,7 +362,8 @@
   <ul class="nav-links">
     <li><a href="#services" data-tr="Hizmetler" data-en="Services">Hizmetler</a></li>
     <li><a href="#why" data-tr="Neden Melz" data-en="Why Melz">Neden Melz</a></li>
-    <li><a href="#process" data-tr="Süreç" data-en="Process">Süreç</a></li>
+    <li><a href="#faq" data-tr="SSS" data-en="FAQ">SSS</a></li>
+    <li><a href="blog/" data-tr="Blog" data-en="Blog">Blog</a></li>
     <li><a href="#contact" class="nav-cta" data-tr="İletişim" data-en="Contact">İletişim</a></li>
   </ul>
 </nav>
@@ -487,6 +554,194 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <p class="section-label" data-tr="Müşteri Görüşleri" data-en="Client Reviews">Müşteri Görüşleri</p>
+    <h2 class="section-title" data-tr="Müşterilerimiz Ne Diyor?" data-en="What Our Clients Say?">Müşterilerimiz Ne Diyor?</h2>
+    <p class="section-desc" data-tr="500'ü aşkın memnun müşterimizden bazı görüşler." data-en="Some reviews from our 500+ satisfied clients.">500'ü aşkın memnun müşterimizden bazı görüşler.</p>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text" data-tr="Çin'den yaptığımız düzenli ithalatlarda Melz ekibi her zaman hızlı ve hatasız çalışıyor. GTİP kodu tespitinden antrepo süreçlerine kadar her şeyi yönetiyorlar. Kesinlikle tavsiye ederim." data-en="The Melz team always works quickly and flawlessly in our regular imports from China. They manage everything from HS code determination to warehouse processes. I highly recommend them.">Çin'den yaptığımız düzenli ithalatlarda Melz ekibi her zaman hızlı ve hatasız çalışıyor. GTİP kodu tespitinden antrepo süreçlerine kadar her şeyi yönetiyorlar. Kesinlikle tavsiye ederim.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AK</div>
+          <div class="testimonial-info">
+            <strong>Ahmet K.</strong>
+            <span data-tr="İthalat Müdürü, Tekstil Firması" data-en="Import Manager, Textile Company">İthalat Müdürü, Tekstil Firması</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text" data-tr="Avrupa'ya ihracat süreçlerimizde menşe belgelendirmesi ve EUR.1 konusunda çok değerli destek aldık. Bürokrasi bizim için artık bir sorun değil. Melz ile çalışmak büyük avantaj." data-en="We received very valuable support on origin certification and EUR.1 in our export processes to Europe. Bureaucracy is no longer a problem for us. Working with Melz is a great advantage.">Avrupa'ya ihracat süreçlerimizde menşe belgelendirmesi ve EUR.1 konusunda çok değerli destek aldık. Bürokrasi bizim için artık bir sorun değil. Melz ile çalışmak büyük avantaj.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SY</div>
+          <div class="testimonial-info">
+            <strong>Selin Y.</strong>
+            <span data-tr="Dış Ticaret Uzmanı, Makine Sektörü" data-en="Foreign Trade Specialist, Machinery Sector">Dış Ticaret Uzmanı, Makine Sektörü</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text" data-tr="Gümrükte takılan bir yükümüz vardı, 3 farklı müşavirle çözüm bulamadık. Melz 2 günde halletti. Uzman ekipleri, hızlı iletişimleri ve 7/24 erişilebilirlikleri ile tam anlamıyla güvenilir bir iş ortağı." data-en="We had a shipment stuck in customs, couldn't find a solution with 3 different advisors. Melz solved it in 2 days. With their expert team, fast communication and 24/7 accessibility, they are a truly reliable business partner.">Gümrükte takılan bir yükümüz vardı, 3 farklı müşavirle çözüm bulamadık. Melz 2 günde halletti. Uzman ekipleri ve 7/24 erişilebilirlikleriyle tam anlamıyla güvenilir bir iş ortağı.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MÇ</div>
+          <div class="testimonial-info">
+            <strong>Murat Ç.</strong>
+            <span data-tr="Genel Müdür, Kimya Firması" data-en="General Manager, Chemical Company">Genel Müdür, Kimya Firması</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section id="trust">
+  <div class="trust-inner">
+    <p class="trust-label" data-tr="Sertifikalar &amp; Yetki Belgeleri" data-en="Certifications &amp; Authorizations">Sertifikalar &amp; Yetki Belgeleri</p>
+    <div class="trust-grid">
+      <div class="trust-badge reveal">
+        <div class="trust-badge-icon">📋</div>
+        <div class="trust-badge-title" data-tr="Yetkili Gümrük Müşaviri" data-en="Authorized Customs Advisor">Yetkili Gümrük Müşaviri</div>
+        <div class="trust-badge-desc" data-tr="T.C. Ticaret Bakanlığı onaylı gümrük müşavirliği ruhsatı" data-en="T.R. Ministry of Trade approved customs consultancy license">T.C. Ticaret Bakanlığı onaylı gümrük müşavirliği ruhsatı</div>
+      </div>
+      <div class="trust-badge reveal">
+        <div class="trust-badge-icon">🔐</div>
+        <div class="trust-badge-title" data-tr="AEO Yetkili Ekonomik Operatör" data-en="AEO Authorized Economic Operator">AEO Yetkili Ekonomik Operatör</div>
+        <div class="trust-badge-desc" data-tr="Gümrük Birliği kapsamında tanınmış güvenilir operatör statüsü" data-en="Recognized trusted operator status under the Customs Union">Gümrük Birliği kapsamında güvenilir operatör statüsü</div>
+      </div>
+      <div class="trust-badge reveal">
+        <div class="trust-badge-icon">🏛️</div>
+        <div class="trust-badge-title" data-tr="İGMD Üyesi" data-en="IGMD Member">İGMD Üyesi</div>
+        <div class="trust-badge-desc" data-tr="İstanbul Gümrük Müşavirleri Derneği aktif üyeliği" data-en="Active membership of Istanbul Customs Consultants Association">İstanbul Gümrük Müşavirleri Derneği aktif üyeliği</div>
+      </div>
+      <div class="trust-badge reveal">
+        <div class="trust-badge-icon">🌍</div>
+        <div class="trust-badge-title" data-tr="FIATA Ağı" data-en="FIATA Network">FIATA Ağı</div>
+        <div class="trust-badge-desc" data-tr="Uluslararası Taşımacılık Kuruluşları Federasyonu iş ortağı" data-en="International Federation of Freight Forwarders Associations partner">Uluslararası Taşımacılık Federasyonu iş ortağı</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section id="blog">
+  <div class="section-inner">
+    <p class="section-label" data-tr="Bilgi Merkezi" data-en="Knowledge Center">Bilgi Merkezi</p>
+    <h2 class="section-title" data-tr="Son Yazılarımız" data-en="Latest Articles">Son Yazılarımız</h2>
+    <p class="section-desc" data-tr="Gümrük ve dış ticaret dünyasından güncel bilgiler." data-en="Latest information from the world of customs and foreign trade.">Gümrük ve dış ticaret dünyasından güncel bilgiler.</p>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-card-header">
+          <span class="blog-tag" data-tr="Gümrük" data-en="Customs">Gümrük</span>
+          <h3 data-tr="GTİP Kodu Nedir? Nasıl Bulunur?" data-en="What is an HS Code? How to Find It?">GTİP Kodu Nedir? Nasıl Bulunur?</h3>
+        </div>
+        <p data-tr="İthalat ve ihracat işlemlerinin temel taşı olan GTİP kodunu, nasıl tespit edildiğini ve yanlış sınıflandırmanın getirdiği riskleri açıklıyoruz." data-en="We explain the HS code, which is the cornerstone of import and export operations, how it is determined, and the risks of incorrect classification.">İthalat ve ihracat işlemlerinin temel taşı olan GTİP kodunu, nasıl tespit edildiğini ve yanlış sınıflandırmanın getirdiği riskleri açıklıyoruz.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">Haziran 2026</span>
+          <a href="blog/gtip-kodu-nedir.html" class="blog-read-more" data-tr="Devamını Oku →" data-en="Read More →">Devamını Oku →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-card-header">
+          <span class="blog-tag" data-tr="İthalat" data-en="Import">İthalat</span>
+          <h3 data-tr="İthalatta Hangi Belgeler Gerekir?" data-en="What Documents Are Required for Import?">İthalatta Hangi Belgeler Gerekir?</h3>
+        </div>
+        <p data-tr="Yurt dışından mal alırken ihtiyaç duyulan tüm belgeler: konşimento, menşe şahadetnamesi, çeki listesi, fatura ve daha fazlası." data-en="All documents needed when purchasing goods from abroad: bill of lading, certificate of origin, packing list, invoice and more.">Yurt dışından mal alırken ihtiyaç duyulan tüm belgeler: konşimento, menşe şahadetnamesi, çeki listesi, fatura ve daha fazlası.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">Haziran 2026</span>
+          <a href="blog/ithalat-belgeleri.html" class="blog-read-more" data-tr="Devamını Oku →" data-en="Read More →">Devamını Oku →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-card-header">
+          <span class="blog-tag" data-tr="Vergi" data-en="Tax">Vergi</span>
+          <h3 data-tr="Gümrük Vergisi Nasıl Hesaplanır?" data-en="How is Customs Duty Calculated?">Gümrük Vergisi Nasıl Hesaplanır?</h3>
+        </div>
+        <p data-tr="CIF değeri, gümrük vergisi oranları, KDV, ÖTV ve diğer kesintiler dahil adım adım gümrük vergisi hesaplama rehberi." data-en="Step-by-step customs duty calculation guide including CIF value, customs duty rates, VAT, special consumption tax and other deductions.">CIF değeri, gümrük vergisi oranları, KDV, ÖTV ve diğer kesintiler dahil adım adım gümrük vergisi hesaplama rehberi.</p>
+        <div class="blog-card-footer">
+          <span class="blog-date">Mayıs 2026</span>
+          <a href="blog/gumruk-vergisi-hesaplama.html" class="blog-read-more" data-tr="Devamını Oku →" data-en="Read More →">Devamını Oku →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <p class="section-label" data-tr="Sık Sorulan Sorular" data-en="FAQ">Sık Sorulan Sorular</p>
+    <h2 class="section-title" data-tr="Merak Ettikleriniz" data-en="Your Questions Answered">Merak Ettikleriniz</h2>
+    <p class="section-desc" data-tr="Gümrük ve lojistik süreçlerine dair en sık sorulan sorular." data-en="The most frequently asked questions about customs and logistics processes.">Gümrük ve lojistik süreçlerine dair en sık sorulan sorular.</p>
+    <div class="faq-grid">
+      <div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="GTİP kodu nedir ve neden önemlidir?" data-en="What is an HS code and why is it important?">GTİP kodu nedir ve neden önemlidir?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="GTİP (Gümrük Tarife İstatistik Pozisyonu), her ürünün uluslararası alanda tanımlandığı 12 haneli bir numaradır. İthalat ve ihracatta uygulanacak vergi oranı, yasak ve kısıtlamalar bu koda göre belirlenir. Yanlış sınıflandırma cezai yaptırım ve gümrük kıymet tarhiyatına yol açabilir." data-en="The HS code is a 12-digit number by which each product is internationally identified. The tax rate, prohibitions and restrictions applicable to imports and exports are determined according to this code. Incorrect classification can lead to penal sanctions and customs value assessments.">GTİP (Gümrük Tarife İstatistik Pozisyonu), her ürünün uluslararası alanda tanımlandığı 12 haneli bir numaradır. İthalat ve ihracatta uygulanacak vergi oranı bu koda göre belirlenir. Yanlış sınıflandırma cezai yaptırıma yol açabilir.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="Gümrük işlemleri ne kadar sürer?" data-en="How long do customs procedures take?">Gümrük işlemleri ne kadar sürer?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="Belgelerin eksiksiz olması ve yeşil hat uygulaması durumunda aynı gün gümrükleme mümkündür. Muayene gerektiren işlemlerde 1-3 iş günü öngörülmektedir. Antidamping veya özel denetim gerektiren yüklerde bu süre uzayabilir." data-en="If documents are complete and the green lane is applied, same-day customs clearance is possible. For procedures requiring inspection, 1-3 business days are estimated. This period may be extended for shipments requiring anti-dumping or special inspection.">Belgelerin eksiksiz olması ve yeşil hat uygulaması durumunda aynı gün gümrükleme mümkündür. Muayene gerektiren işlemlerde 1-3 iş günü öngörülmektedir.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="Gümrük vergisi nasıl hesaplanır?" data-en="How is customs duty calculated?">Gümrük vergisi nasıl hesaplanır?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="Gümrük vergisi, ürünün CIF değeri (maliyet + sigorta + navlun) üzerinden GTİP koduna göre belirlenen oran ile hesaplanır. Buna ek olarak KDV (%20), varsa ÖTV ve diğer harçlar uygulanır. Serbest ticaret anlaşmaları kapsamında tercihli tarife uygulanabilir." data-en="Customs duty is calculated by multiplying the CIF value (cost + insurance + freight) of the product by the rate determined according to the HS code. Additionally, VAT (20%), SCT if applicable, and other fees are applied. Preferential tariffs may apply under free trade agreements.">Gümrük vergisi, ürünün CIF değeri üzerinden GTİP koduna göre belirlenen oran ile hesaplanır. Buna ek olarak KDV, varsa ÖTV uygulanır. Serbest ticaret anlaşmaları kapsamında tercihli tarife uygulanabilir.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="AEO statüsü ne avantaj sağlar?" data-en="What advantages does AEO status provide?">AEO statüsü ne avantaj sağlar?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="Yetkili Ekonomik Operatör (AEO) statüsü; daha az fiziki muayene, öncelikli gümrükleme, basitleştirilmiş prosedürler ve diğer ülkelerin AEO programlarıyla karşılıklı tanıma avantajları sağlar. Bu statü işlem sürelerini önemli ölçüde kısaltır." data-en="Authorized Economic Operator (AEO) status provides advantages such as fewer physical inspections, priority customs clearance, simplified procedures and mutual recognition with AEO programs of other countries. This status significantly reduces processing times.">AEO statüsü; daha az fiziki muayene, öncelikli gümrükleme ve basitleştirilmiş prosedürler sağlar. Diğer ülkelerin AEO programlarıyla karşılıklı tanıma avantajı da sunar.</p></div>
+        </div>
+      </div>
+      <div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="İthalatta hangi belgeler gerekir?" data-en="What documents are required for import?">İthalatta hangi belgeler gerekir?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="Temel belgeler: ticari fatura, çeki listesi, konşimento (deniz) veya airway bill (hava), menşe şahadetnamesi. Ürüne göre ek belgeler gerekebilir: CE belgesi, gıda analiz raporu, ithal lisansı, gözetim belgesi. Tüm belgelerin doğruluğu ve eksiksizliği gümrük sürecini hızlandırır." data-en="Basic documents: commercial invoice, packing list, bill of lading (sea) or airway bill (air), certificate of origin. Additional documents may be required depending on the product: CE certificate, food analysis report, import license, surveillance document. The accuracy and completeness of all documents speeds up the customs process.">Temel belgeler: ticari fatura, çeki listesi, konşimento, menşe şahadetnamesi. Ürüne göre CE belgesi, gıda analiz raporu veya ithal lisansı da gerekebilir.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="Antrepo rejiminin avantajı nedir?" data-en="What is the advantage of the warehouse regime?">Antrepo rejiminin avantajı nedir?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="Antrepo rejimi, ithal edilen malların gümrük vergileri ödenmeksizin belirlenen süre boyunca gümrüklü antrepoda bekletilmesine olanak tanır. Bu sayede vergiyi satış geliri elde ettikten sonra ödeyebilir, nakit akışınızı koruyabilirsiniz. Azami 3 yıl süreyle kullanılabilir." data-en="The warehouse regime allows imported goods to be stored in bonded warehouses for a specified period without paying customs duties. This way, you can pay the tax after obtaining sales revenue and maintain your cash flow. It can be used for a maximum of 3 years.">Antrepo rejimi, malların gümrük vergisi ödenmeksizin antrepoda bekletilmesini sağlar. Vergiyi satış sonrası ödeyerek nakit akışınızı koruyabilirsiniz. Azami 3 yıl kullanılabilir.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="Serbest ticaret anlaşmalarından nasıl yararlanırım?" data-en="How do I benefit from free trade agreements?">Serbest ticaret anlaşmalarından nasıl yararlanırım?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="Türkiye'nin taraf olduğu STA'lardan yararlanmak için malın tercihli menşe kurallarını karşılaması ve EUR.1, A.TR veya Form-A gibi menşe belgesiyle birlikte beyan edilmesi gerekir. Bu belgeler gümrük vergisini sıfırlayabilir veya önemli ölçüde düşürebilir." data-en="To benefit from FTAs to which Turkey is a party, the goods must meet the preferential rules of origin and be declared with an origin document such as EUR.1, A.TR or Form-A. These documents can reduce customs duty to zero or significantly reduce it.">STA'lardan yararlanmak için malın tercihli menşe kurallarını karşılaması ve EUR.1 veya A.TR belgesiyle beyan edilmesi gerekir. Bu, gümrük vergisini sıfırlayabilir.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span data-tr="Gümrükte takılan yük için ne yapılır?" data-en="What to do for a shipment stuck in customs?">Gümrükte takılan yük için ne yapılır?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-a"><p data-tr="İlk adım, takılma nedenini tespit etmektir: belge eksikliği, GTİP ihtilafı, değer kıymet sorunu veya yasaklı ürün listesi. Melz uzmanları sorunun kaynağını hızla tespit ederek beyan düzeltmesi, itiraz, ek belge temini veya teknik bilirkişi süreci başlatır. Bize hemen ulaşın: 0212 564 56 58." data-en="The first step is to identify the reason for the hold: missing documents, HS code dispute, valuation issue, or prohibited product list. Melz experts quickly identify the source of the problem and initiate declaration correction, objection, additional document procurement, or technical expert process. Contact us immediately: 0212 564 56 58.">İlk adım, takılma nedenini tespit etmektir: belge eksikliği, GTİP ihtilafı veya değer kıymet sorunu. Melz uzmanları sorunun kaynağını hızla tespit ederek çözüm sürecini başlatır. Hemen arayın: 0212 564 56 58.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="section-inner">
@@ -628,6 +883,13 @@
       const t = opt.getAttribute('data-' + lang);
       if (t) opt.textContent = t;
     });
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
   }
 
   // Scroll reveal

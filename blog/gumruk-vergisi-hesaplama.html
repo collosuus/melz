@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gümrük Vergisi Nasıl Hesaplanır? | Melz Gümrük Müşavirliği</title>
+  <meta name="description" content="CIF değeri, gümrük vergisi oranları, KDV, ÖTV ve tüm kesintilerle adım adım gümrük vergisi hesaplama rehberi. Gerçek örnekle anlat." />
+  <link rel="canonical" href="https://www.melzgumruk.com/blog/gumruk-vergisi-hesaplama.html" />
+  <link rel="icon" type="image/png" href="/melz-logo-header-small-160x50.png" />
+  <meta property="og:title" content="Gümrük Vergisi Nasıl Hesaplanır?" />
+  <meta property="og:description" content="Adım adım gümrük vergisi hesaplama: CIF değeri, vergi oranları, KDV ve ÖTV." />
+  <meta property="og:url" content="https://www.melzgumruk.com/blog/gumruk-vergisi-hesaplama.html" />
+  <meta property="og:type" content="article" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Gümrük Vergisi Nasıl Hesaplanır?",
+    "description": "CIF değeri, gümrük vergisi oranları, KDV ve ÖTV dahil adım adım gümrük vergisi hesaplama rehberi.",
+    "datePublished": "2026-05-15",
+    "dateModified": "2026-06-25",
+    "author": {"@type": "Organization", "name": "Melz Gümrük Müşavirliği"},
+    "publisher": {"@type": "Organization", "name": "Melz Gümrük Müşavirliği", "url": "https://www.melzgumruk.com"},
+    "url": "https://www.melzgumruk.com/blog/gumruk-vergisi-hesaplama.html",
+    "inLanguage": "tr"
+  }
+  </script>
+  <style>
+    :root { --navy:#0a1628; --navy-mid:#112240; --accent:#c8922a; --accent-light:#e8b44a; --white:#ffffff; --text-muted:#8a9ab5; --border:rgba(255,255,255,0.08); }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--white); line-height: 1.7; }
+    nav { position: sticky; top: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 64px; background: rgba(10,22,40,0.97); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .logo img { height: 36px; object-fit: contain; }
+    .logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 20px; color: var(--white); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-back { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-back:hover { color: var(--accent); }
+    .article-wrap { max-width: 780px; margin: 0 auto; padding: 60px 5% 100px; }
+    .article-tag { display: inline-block; padding: 4px 14px; background: rgba(200,146,42,0.12); border: 1px solid rgba(200,146,42,0.25); border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+    h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(36px, 6vw, 56px); font-weight: 800; text-transform: uppercase; line-height: 1.05; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .article-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 48px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; margin: 40px 0 16px; color: var(--white); }
+    p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 20px; }
+    ul, ol { padding-left: 24px; margin-bottom: 20px; }
+    li { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.75); margin-bottom: 8px; }
+    .calc-box { background: rgba(17,34,64,0.9); border: 1px solid rgba(200,146,42,0.2); border-radius: 12px; padding: 28px 32px; margin: 32px 0; }
+    .calc-box h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    .calc-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 15px; }
+    .calc-row:last-child { border-bottom: none; font-weight: 600; font-size: 16px; color: var(--accent); padding-top: 16px; }
+    .calc-label { color: rgba(255,255,255,0.7); }
+    .calc-value { font-weight: 600; color: var(--white); }
+    .callout { background: rgba(200,146,42,0.08); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 32px 0; }
+    .callout p { color: rgba(255,255,255,0.85); margin: 0; }
+    .cta-box { background: rgba(17,34,64,0.8); border: 1px solid rgba(200,146,42,0.2); border-radius: 12px; padding: 36px; text-align: center; margin-top: 60px; }
+    .cta-box h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+    .cta-box p { font-size: 15px; margin-bottom: 24px; }
+    .btn { display: inline-block; padding: 13px 30px; background: var(--accent); color: var(--navy); font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+    .btn:hover { background: var(--accent-light); }
+    footer { text-align: center; padding: 32px 5%; border-top: 1px solid var(--border); font-size: 13px; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">
+    <img src="/melz-logo-header-mobile-200x60.png" alt="Melz Logo" />
+    <span class="logo-text">Melz</span>
+  </a>
+  <a href="/" class="nav-back">← Ana Sayfa</a>
+</nav>
+
+<article class="article-wrap">
+  <span class="article-tag">Vergi</span>
+  <h1>Gümrük Vergisi Nasıl Hesaplanır?</h1>
+  <div class="article-meta">Melz Gümrük Müşavirliği &nbsp;·&nbsp; Mayıs 2026 &nbsp;·&nbsp; 7 dakika okuma</div>
+
+  <p>İthalat yapmadan önce toplam maliyeti doğru hesaplamak, karlılık analiziniz açısından kritik önem taşır. Gümrük vergisi tek bir kalemden oluşmaz; birden fazla vergi ve harç bir arada uygulanır. Bu rehberde adım adım gümrük vergisi hesaplama yöntemini, gerçek bir örnekle açıklıyoruz.</p>
+
+  <h2>Gümrük Kıymeti: Hesaplamanın Temeli</h2>
+  <p>Gümrük vergisi, malın <strong>CIF değeri</strong> üzerinden hesaplanır. CIF değeri şu üç bileşenden oluşur:</p>
+  <ul>
+    <li><strong>C — Cost (Maliyet):</strong> Faturada belirtilen mal bedeli</li>
+    <li><strong>I — Insurance (Sigorta):</strong> Taşıma sigortası ücreti</li>
+    <li><strong>F — Freight (Navlun):</strong> Taşıma ücreti</li>
+  </ul>
+  <p>FOB fiyatıyla alım yapıyorsanız, Türkiye'ye kadar olan navlun ve sigorta bedelini CIF değerine eklemeniz gerekir. Bu değerler döviz kuru üzerinden Türk Lirası'na çevrilir (Merkez Bankası ilan kuru kullanılır).</p>
+
+  <h2>Uygulanan Vergi ve Harçlar</h2>
+  <ol>
+    <li><strong>Gümrük Vergisi (GV):</strong> CIF değeri × GTİP'e göre belirlenen oran</li>
+    <li><strong>Katma Değer Vergisi (KDV):</strong> (CIF + GV) × %20 (genel oran; bazı ürünlerde %10 veya %1)</li>
+    <li><strong>Özel Tüketim Vergisi (ÖTV):</strong> Alkol, tütün, akaryakıt, lüks araç gibi ürünlerde ek vergi</li>
+    <li><strong>Toplu Konut Fonu (TKF):</strong> Bazı tarım ürünlerinde ek fon</li>
+    <li><strong>Antidamping Vergisi:</strong> Belirli ülke–ürün kombinasyonlarında ek koruma vergisi</li>
+    <li><strong>Gümrük Hizmet Bedeli:</strong> İdareye ödenen sabit harç tutarı</li>
+  </ol>
+
+  <h2>Gerçek Bir Örnek ile Hesaplama</h2>
+  <p>Senaryo: Çin'den 1.000 adet pamuklu tişört ithal ediyorsunuz.<br />
+  Fatura bedeli: 5.000 USD | Navlun: 300 USD | Sigorta: 50 USD | Kur: 1 USD = 32 TL<br />
+  GTİP: 6109.10.00 | GV oranı: %12 | KDV: %20</p>
+
+  <div class="calc-box">
+    <h3>Hesaplama Tablosu</h3>
+    <div class="calc-row"><span class="calc-label">CIF Değeri (USD)</span><span class="calc-value">5.350 USD</span></div>
+    <div class="calc-row"><span class="calc-label">CIF Değeri (TL) — 1 USD = 32 TL</span><span class="calc-value">171.200 TL</span></div>
+    <div class="calc-row"><span class="calc-label">Gümrük Vergisi (%12)</span><span class="calc-value">20.544 TL</span></div>
+    <div class="calc-row"><span class="calc-label">KDV Matrahı (CIF + GV)</span><span class="calc-value">191.744 TL</span></div>
+    <div class="calc-row"><span class="calc-label">KDV (%20)</span><span class="calc-value">38.349 TL</span></div>
+    <div class="calc-row"><span class="calc-label">Gümrük Hizmet Bedeli (tahmini)</span><span class="calc-value">~500 TL</span></div>
+    <div class="calc-row"><span class="calc-label">Toplam Gümrük Maliyeti</span><span class="calc-value">~59.393 TL</span></div>
+  </div>
+
+  <div class="callout">
+    <p>💡 <strong>Not:</strong> Bu hesaplama varsayımsal örnek olup güncel kurlar ve mevzuat değişkenlik gösterebilir. Kesin hesaplama için Melz uzmanlarıyla iletişime geçin.</p>
+  </div>
+
+  <h2>STA Kapsamında Vergi İndirimi</h2>
+  <p>Eğer ithal ettiğiniz ürün Türkiye'nin Serbest Ticaret Anlaşması imzaladığı bir ülkeden geliyorsa ve tercihli menşe koşullarını karşılıyorsa, GV oranı sıfırlanabilir veya önemli ölçüde düşürülebilir. Örneğin AB ülkelerinden gelen sanayi ürünlerinde GV genellikle sıfırdır; yalnızca KDV ödenir.</p>
+
+  <h2>Dikkat Edilmesi Gereken Durumlar</h2>
+  <ul>
+    <li><strong>Kıymet ihtilafı:</strong> Gümrük idaresi fatura bedelini düşük bulursa emsal kıymet belirleyebilir. Bu durumda daha yüksek vergi hesaplanır.</li>
+    <li><strong>Antidamping vergisi:</strong> Özellikle Çin menşeli çelik, seramik ve bazı kimyasal ürünlerde ek vergi uygulanabilir. Beyan öncesi kontrol gereklidir.</li>
+    <li><strong>ÖTV matrahı:</strong> ÖTV, GV'nin üstüne değil genellikle CIF değerinin üstüne eklenir; ürüne göre değişkenlik gösterir.</li>
+    <li><strong>İndirimli KDV:</strong> Gıda maddelerinin bir kısmında KDV %1, sağlık ürünlerinde %10 uygulanabilir.</li>
+  </ul>
+
+  <div class="cta-box">
+    <h3>Vergi Yükünüzü Önceden Hesaplayalım</h3>
+    <p>İthalatınızın toplam maliyetini Melz uzmanlarıyla birlikte hesaplayın, rekabetçi bir fiyatlandırma stratejisi belirleyin.</p>
+    <a href="/#contact" class="btn">Ücretsiz Maliyet Analizi</a>
+  </div>
+</article>
+
+<footer>© 2026 Melz Gümrük Müşavirliği · <a href="/" style="color:var(--accent);text-decoration:none;">melzgumruk.com</a></footer>
+</body>
+</html>
