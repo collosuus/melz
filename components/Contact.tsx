@@ -34,16 +34,40 @@ const phoneCodes = [
 export default function Contact() {
   const { lang } = useLang();
   const t = (tr: string, en: string) => lang === 'tr' ? tr : en;
-  const phoneHiddenRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
   const [phoneCode, setPhoneCode] = useState('+90');
   const [phoneNum, setPhoneNum] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
-  function handleSubmit() {
-    // Combine country code + number into the hidden "phone" field before POST
-    if (phoneHiddenRef.current) {
-      phoneHiddenRef.current.value = phoneNum ? `${phoneCode} ${phoneNum}` : '';
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('sending');
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    if (phoneNum) {
+      data.set('phone', `${phoneCode} ${phoneNum}`);
     }
-    // No preventDefault — form submits natively to Formspree
+
+    try {
+      const res = await fetch('https://formspree.io/f/meebapoq', {
+        method: 'POST',
+        body: data,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (res.ok) {
+        setStatus('success');
+        formRef.current?.reset();
+        setPhoneCode('+90');
+        setPhoneNum('');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
   }
 
   return (
@@ -79,74 +103,79 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <form
-              action="https://formspree.io/f/meebapoq"
-              method="POST"
-              className="contact-form"
-              onSubmit={handleSubmit}
-            >
-              {/* Formspree helpers */}
-              <input type="hidden" name="_subject" value="Melz Gümrük — Yeni Talep" />
-              <input type="hidden" name="_next" value="https://www.melzgumruk.com/?sent=1" />
-              {/* Combined phone value set by handleSubmit before POST */}
-              <input type="hidden" name="phone" ref={phoneHiddenRef} />
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label>{t('Adınız', 'Your Name')}</label>
-                  <input type="text" name="name" required placeholder={t('Adınız', 'Your name')} />
+            {status === 'success' ? (
+              <div className="form-success">
+                <div className="form-success-icon">✓</div>
+                <h3>{t('Mesajınız İletildi!', 'Message Sent!')}</h3>
+                <p>{t('En kısa sürede size geri döneceğiz.', 'We will get back to you as soon as possible.')}</p>
+                <button className="submit-btn" style={{ marginTop: '24px' }} onClick={() => setStatus('idle')}>
+                  {t('Yeni Mesaj Gönder', 'Send Another Message')}
+                </button>
+              </div>
+            ) : (
+              <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label>{t('Adınız', 'Your Name')}</label>
+                    <input type="text" name="name" required placeholder={t('Adınız', 'Your name')} />
+                  </div>
+                  <div className="form-group">
+                    <label>{t('Şirket Adı', 'Company Name')}</label>
+                    <input type="text" name="company" placeholder={t('Şirket Adı', 'Company Name')} />
+                  </div>
                 </div>
                 <div className="form-group">
-                  <label>{t('Şirket Adı', 'Company Name')}</label>
-                  <input type="text" name="company" placeholder={t('Şirket Adı', 'Company Name')} />
+                  <label>{t('E-posta', 'E-mail')}</label>
+                  <input type="email" name="email" required placeholder={t('ornek@sirket.com', 'example@company.com')} />
                 </div>
-              </div>
-              <div className="form-group">
-                <label>{t('E-posta', 'E-mail')}</label>
-                <input type="email" name="email" required placeholder={t('ornek@sirket.com', 'example@company.com')} />
-              </div>
-              <div className="form-group">
-                <label>{t('Telefon', 'Phone')}</label>
-                <div className="phone-field">
-                  <select
-                    value={phoneCode}
-                    onChange={(e) => setPhoneCode(e.target.value)}
-                    aria-label={t('Ülke kodu', 'Country code')}
-                  >
-                    {phoneCodes.map((pc, i) => (
-                      <option key={i} value={pc.code}>{pc.flag} {pc.label}</option>
-                    ))}
+                <div className="form-group">
+                  <label>{t('Telefon', 'Phone')}</label>
+                  <div className="phone-field">
+                    <select
+                      value={phoneCode}
+                      onChange={(e) => setPhoneCode(e.target.value)}
+                      aria-label={t('Ülke kodu', 'Country code')}
+                    >
+                      {phoneCodes.map((pc, i) => (
+                        <option key={i} value={pc.code}>{pc.flag} {pc.label}</option>
+                      ))}
+                    </select>
+                    <input
+                      type="tel"
+                      value={phoneNum}
+                      onChange={(e) => setPhoneNum(e.target.value)}
+                      placeholder={t('5XX XXX XX XX', 'Your phone number')}
+                    />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <label>{t('Hizmet Türü', 'Service Type')}</label>
+                  <select name="service">
+                    <option value="">{t('Seçiniz...', 'Select...')}</option>
+                    <option>{t('Gümrük Müşavirliği', 'Customs Consultancy')}</option>
+                    <option>{t('Lojistik', 'Logistics')}</option>
+                    <option>{t('Antrepo', 'Warehousing')}</option>
+                    <option>{t('Ticaret Danışmanlığı', 'Trade Consulting')}</option>
                   </select>
-                  <input
-                    type="tel"
-                    value={phoneNum}
-                    onChange={(e) => setPhoneNum(e.target.value)}
-                    placeholder={t('5XX XXX XX XX', 'Your phone number')}
+                </div>
+                <div className="form-group">
+                  <label>{t('Mesajınız', 'Your Message')}</label>
+                  <textarea
+                    name="message"
+                    required
+                    placeholder={t('Talebinizi kısaca açıklayın...', 'Briefly describe your request...')}
                   />
                 </div>
-              </div>
-              <div className="form-group">
-                <label>{t('Hizmet Türü', 'Service Type')}</label>
-                <select name="service">
-                  <option value="">{t('Seçiniz...', 'Select...')}</option>
-                  <option>{t('Gümrük Müşavirliği', 'Customs Consultancy')}</option>
-                  <option>{t('Lojistik', 'Logistics')}</option>
-                  <option>{t('Antrepo', 'Warehousing')}</option>
-                  <option>{t('Ticaret Danışmanlığı', 'Trade Consulting')}</option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label>{t('Mesajınız', 'Your Message')}</label>
-                <textarea
-                  name="message"
-                  required
-                  placeholder={t('Talebinizi kısaca açıklayın...', 'Briefly describe your request...')}
-                />
-              </div>
-              <button type="submit" className="submit-btn">
-                {t('Gönder', 'Send')}
-              </button>
-            </form>
+                {status === 'error' && (
+                  <p style={{ color: '#e57373', fontSize: '14px', marginBottom: '12px' }}>
+                    {t('Bir hata oluştu, lütfen tekrar deneyin.', 'Something went wrong, please try again.')}
+                  </p>
+                )}
+                <button type="submit" className="submit-btn" disabled={status === 'sending'}>
+                  {status === 'sending' ? t('Gönderiliyor...', 'Sending...') : t('Gönder', 'Send')}
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
