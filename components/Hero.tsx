@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="hero-video">
         <video autoPlay muted loop playsInline preload="none" style={{ background: '#0a1628' }}>
           <source src="/12028815_1920_1080_24fps.webm" type="video/webm" />
-          <source src="/12028815_1920_1080_24fps.mp4" type="video/mp4" />
+          <source src="/anasayfavideo.mp4" type="video/mp4" />
         </video>
       </div>
       <div className="hero-bg" />
