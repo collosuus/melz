@@ -88,7 +88,6 @@ export default function Contact() {
               {/* Formspree helpers */}
               <input type="hidden" name="_subject" value="Melz Gümrük — Yeni Talep" />
               <input type="hidden" name="_next" value="https://www.melzgumruk.com/?sent=1" />
-              <input type="hidden" name="_cc" value="misranaz@beysangumruk.com" />
               {/* Combined phone value set by handleSubmit before POST */}
               <input type="hidden" name="phone" ref={phoneHiddenRef} />
 
