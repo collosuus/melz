@@ -1,0 +1,251 @@
+{
+  "summary": {
+    "health_score": 38,
+    "business_type": "Local Professional Service — Customs & Logistics (B2B, Istanbul)",
+    "top_findings": [
+      "Meta description eksik — Google otomatik snippet seçiyor",
+      "Schema markup (JSON-LD) yok — yerel arama görünürlüğü düşük",
+      "sitemap.xml ve robots.txt yok — tarama verimliliği düşük",
+      "hreflang yok — ikilidil site yanlış dil sürümü gösterebilir",
+      "İçerik çok az (~310 kelime) — rekabetçi sıralama mümkün değil"
+    ],
+    "quick_wins": [
+      "Meta description ekle (30 dakika)",
+      "Canonical tag ekle (10 dakika)",
+      "Favicon ekle (15 dakika)",
+      "Open Graph etiketleri ekle (30 dakika)",
+      "robots.txt ve sitemap.xml dosyaları oluştur (20 dakika)"
+    ]
+  },
+  "categories": [
+    {
+      "name": "Technical SEO",
+      "score": 35,
+      "what_works": [
+        "HTTPS aktif (Vercel SSL)",
+        "HSTS header mevcut",
+        "Viewport meta doğru",
+        "HTML lang='tr' tanımlı",
+        "H1 tek ve mevcut",
+        "Vercel CDN + GZIP sıkıştırma"
+      ],
+      "findings": [
+        {
+          "title": "robots.txt eksik",
+          "severity": "High",
+          "description": "https://www.melzgumruk.com/robots.txt 404 dönüyor. Arama motoru botları yönlendirilemiyor.",
+          "recommendation": "Kök dizine robots.txt ekle: User-agent: * / Allow: /"
+        },
+        {
+          "title": "sitemap.xml eksik",
+          "severity": "High",
+          "description": "https://www.melzgumruk.com/sitemap.xml 404 dönüyor. Google sayfaları keşfedemez.",
+          "recommendation": "sitemap.xml oluştur ve robots.txt'e Sitemap: satırı ekle"
+        },
+        {
+          "title": "Canonical tag yok",
+          "severity": "High",
+          "description": "www ve non-www sürümler arasında yineleme riski var.",
+          "recommendation": "<link rel='canonical' href='https://www.melzgumruk.com/'> ekle"
+        },
+        {
+          "title": "hreflang yok",
+          "severity": "High",
+          "description": "Site TR/EN iki dilde içerik sunuyor ama hreflang tanımlanmamış. Google yanlış dil sürümü gösterebilir.",
+          "recommendation": "Her iki dil için hreflang etiketleri ekle veya /en/ alt dizin yapısına geç"
+        },
+        {
+          "title": "Open Graph ve Twitter Card meta etiketleri yok",
+          "severity": "Medium",
+          "description": "Sosyal medya paylaşımlarında görsel ve açıklama gösterilmiyor.",
+          "recommendation": "og:title, og:description, og:image, og:url meta etiketleri ekle"
+        },
+        {
+          "title": "Favicon eksik",
+          "severity": "Medium",
+          "description": "Tarayıcı sekmesinde ve Google arama sonuçlarında logo gösterilmiyor.",
+          "recommendation": "favicon.ico veya SVG favicon ekle"
+        },
+        {
+          "title": "Güvenlik header'ları eksik",
+          "severity": "Medium",
+          "description": "CSP, X-Frame-Options, X-Content-Type-Options header'ları yok.",
+          "recommendation": "vercel.json ile headers ekle"
+        }
+      ]
+    },
+    {
+      "name": "Content Quality",
+      "score": 30,
+      "what_works": [
+        "Adres bilgisi mevcut",
+        "Telefon numarası mevcut",
+        "Çalışma saatleri belirtilmiş",
+        "4 hizmet kategorisi açıklanmış",
+        "TR/EN ikilidil destek var"
+      ],
+      "findings": [
+        {
+          "title": "Meta description eksik",
+          "severity": "Critical",
+          "description": "Hiçbir meta description tanımlanmamış. Google otomatik ve alakasız snippet seçiyor.",
+          "recommendation": "Her dil için 150-160 karakterlik meta description ekle. Örnek TR: 'İstanbul Bakırköy merkezli Melz Gümrük Müşavirliği — ithalat, ihracat ve lojistik süreçlerinizi uçtan uca yönetiyoruz. 15+ yıl deneyim, 80+ ülke.'"
+        },
+        {
+          "title": "Çok az içerik (~310 kelime)",
+          "severity": "High",
+          "description": "Rakipler 800-2000+ kelime kullanırken site yalnızca ~310 kelime içeriyor. Google thin content olarak değerlendirebilir.",
+          "recommendation": "Her hizmet için detaylı açıklamalar ekle. Blog bölümü aç."
+        },
+        {
+          "title": "E-E-A-T sinyalleri zayıf",
+          "severity": "High",
+          "description": "Ekip bilgisi, müşteri referansları, sertifikalar ve lisans numarası yok.",
+          "recommendation": "Gümrük Müşaviri ruhsat numarasını, ekip bilgilerini ve referans müşterileri ekle"
+        },
+        {
+          "title": "Blog / içerik pazarlaması yok",
+          "severity": "High",
+          "description": "Organik trafik için en büyük fırsat kullanılmıyor.",
+          "recommendation": "Aylık en az 2-4 makale: 'GTİP kodu nedir', 'İthalat belgeleri', 'Gümrük vergisi hesaplama' vb."
+        }
+      ]
+    },
+    {
+      "name": "Schema / Structured Data",
+      "score": 0,
+      "what_works": [],
+      "findings": [
+        {
+          "title": "Hiç schema markup yok",
+          "severity": "Critical",
+          "description": "JSON-LD yapılandırılmış veri bulunmuyor. Google yerel işletme bilgilerini çıkaramıyor.",
+          "recommendation": "LocalBusiness + ProfessionalService + WebSite schema ekle"
+        }
+      ]
+    },
+    {
+      "name": "Performance",
+      "score": 60,
+      "what_works": [
+        "Vercel CDN (küresel)",
+        "GZIP sıkıştırma aktif",
+        "HTTPS / HTTP2",
+        "Google Fonts preconnect kullanılmış"
+      ],
+      "findings": [
+        {
+          "title": "Hero video 23MB (optimize edilmemiş)",
+          "severity": "High",
+          "description": "12028815_1920_1080_24fps.mp4 dosyası 23MB — mobil kullanıcılarda LCP süresini artırır.",
+          "recommendation": "preload='none' ekle, WebM formatına dönüştür, poster görsel kullan"
+        },
+        {
+          "title": "HTML minify edilmemiş",
+          "severity": "Low",
+          "description": "Inline CSS/JS içeren 41KB HTML minify edilmemiş.",
+          "recommendation": "Vercel build adımı veya HTML minifier kullan"
+        }
+      ]
+    },
+    {
+      "name": "AI Search Readiness (GEO)",
+      "score": 15,
+      "what_works": [
+        "AI crawlerlar engellenmiyor (robots.txt yok)",
+        "Temel şirket iletişim bilgileri mevcut"
+      ],
+      "findings": [
+        {
+          "title": "llms.txt yok",
+          "severity": "Medium",
+          "description": "ChatGPT, Perplexity gibi AI asistanlar için içerik özeti sunulmuyor.",
+          "recommendation": "Kök dizine llms.txt dosyası oluştur"
+        },
+        {
+          "title": "İçerik AI alıntısı için çok yüzeysel",
+          "severity": "High",
+          "description": "~310 kelime ile AI sistemleri bu siteyi kaynak göstermez.",
+          "recommendation": "Sektöre özgü detaylı içerikler ve FAQ bölümü ekle"
+        }
+      ]
+    },
+    {
+      "name": "Local SEO",
+      "score": 40,
+      "what_works": [
+        "NAP (Ad, Adres, Telefon) sayfada mevcut",
+        "İstanbul/Bakırköy adresi açık"
+      ],
+      "findings": [
+        {
+          "title": "Google Business Profile doğrulanmamış olabilir",
+          "severity": "High",
+          "description": "GBP profili olmadan Google Harita'da görünmek mümkün değil.",
+          "recommendation": "https://business.google.com adresinden GBP profili oluştur/doğrula"
+        },
+        {
+          "title": "LocalBusiness schema yok",
+          "severity": "High",
+          "description": "Yerel arama sonuçlarında adres/telefon zengin snippet görünmüyor.",
+          "recommendation": "LocalBusiness JSON-LD schema ekle (bkz. schema.md)"
+        }
+      ]
+    }
+  ],
+  "action_plan": {
+    "phases": [
+      {
+        "name": "Faz 1: Kritik Düzeltmeler",
+        "timeframe": "1. Hafta",
+        "items": [
+          "Meta description ekle (TR + EN)",
+          "Canonical tag ekle",
+          "LocalBusiness + WebSite JSON-LD schema ekle",
+          "robots.txt oluştur",
+          "sitemap.xml oluştur",
+          "Favicon ekle",
+          "Open Graph + Twitter Card meta etiketleri ekle"
+        ]
+      },
+      {
+        "name": "Faz 2: Yüksek Etkili İyileştirmeler",
+        "timeframe": "2-3. Hafta",
+        "items": [
+          "hreflang etiketleri ekle",
+          "Hero video optimize et (WebM + preload=none + poster)",
+          "Google Business Profile oluştur/doğrula",
+          "vercel.json ile güvenlik header'ları ekle",
+          "llms.txt dosyası oluştur",
+          "İçerik derinleştir (her hizmet için 300+ kelime)"
+        ]
+      },
+      {
+        "name": "Faz 3: İçerik ve Otorite",
+        "timeframe": "2. Ay",
+        "items": [
+          "Blog bölümü aç (aylık 2-4 makale)",
+          "FAQ bölümü ekle",
+          "Müşteri referansları bölümü",
+          "Ekip/hakkımızda sayfası",
+          "Sertifikalar ve ruhsat bilgileri",
+          "Hizmet başına ayrı sayfa (URL yapısı)"
+        ]
+      },
+      {
+        "name": "Faz 4: İzleme ve Optimizasyon",
+        "timeframe": "Sürekli",
+        "items": [
+          "Google Search Console bağla",
+          "Google Analytics 4 kur",
+          "Aylık sıralama takibi",
+          "CWV (Core Web Vitals) takibi"
+        ]
+      }
+    ]
+  },
+  "artifacts": {
+    "findings_dir": "findings/",
+    "screenshots_dir": "screenshots/"
+  }
+}
