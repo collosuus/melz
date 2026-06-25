@@ -5,6 +5,9 @@
 *.mkv
 *.webm
 
+# public/ altındaki küçük videolar git'e dahil edilir
+!public/anasayfavideo.mp4
+
 # Next.js
 .next/
 out/
