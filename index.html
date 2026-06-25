@@ -235,6 +235,11 @@
     .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--accent); background: rgba(200,146,42,0.05); }
     .form-group textarea { min-height: 120px; resize: vertical; }
     .form-group select option { background: var(--navy-mid); }
+    .phone-field { display: flex; gap: 0; }
+    .phone-field select { min-width: 120px; border-radius: 6px 0 0 6px; border-right: none; flex-shrink: 0; padding-right: 8px; cursor: pointer; }
+    .phone-field input { flex: 1; border-radius: 0 6px 6px 0; }
+    .phone-field select:focus { border-color: var(--accent); background: rgba(200,146,42,0.05); }
+    .phone-field select:focus + input { border-left-color: var(--accent); }
 
     /* FOOTER */
     footer { background: #060f1e; border-top: 1px solid var(--border); padding: 40px 5%; }
@@ -526,8 +531,41 @@
             </div>
           </div>
           <div class="form-group">
-            <label data-tr="Telefon / E-posta" data-en="Phone / E-mail">Telefon / E-posta</label>
-            <input type="text" id="ph-contact" name="contact" required placeholder="İletişim bilginiz" data-placeholder-tr="İletişim bilginiz" data-placeholder-en="Your contact info" />
+            <label data-tr="E-posta" data-en="E-mail">E-posta</label>
+            <input type="email" id="ph-email" name="email" required placeholder="ornek@sirket.com" data-placeholder-tr="ornek@sirket.com" data-placeholder-en="example@company.com" />
+          </div>
+          <div class="form-group">
+            <label data-tr="Telefon" data-en="Phone">Telefon</label>
+            <div class="phone-field">
+              <select id="phone-code" name="phone_code" aria-label="Ülke kodu">
+                <option value="+90">🇹🇷 +90</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+39">🇮🇹 +39</option>
+                <option value="+34">🇪🇸 +34</option>
+                <option value="+31">🇳🇱 +31</option>
+                <option value="+32">🇧🇪 +32</option>
+                <option value="+48">🇵🇱 +48</option>
+                <option value="+40">🇷🇴 +40</option>
+                <option value="+359">🇧🇬 +359</option>
+                <option value="+30">🇬🇷 +30</option>
+                <option value="+380">🇺🇦 +380</option>
+                <option value="+7">🇷🇺 +7</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+81">🇯🇵 +81</option>
+                <option value="+82">🇰🇷 +82</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+55">🇧🇷 +55</option>
+                <option value="+1-CA">🇨🇦 +1</option>
+                <option value="+98">🇮🇷 +98</option>
+                <option value="+20">🇪🇬 +20</option>
+              </select>
+              <input type="tel" id="ph-phone" name="phone_number" placeholder="5XX XXX XX XX" data-placeholder-tr="5XX XXX XX XX" data-placeholder-en="Your phone number" />
+            </div>
           </div>
           <div class="form-group">
             <label data-tr="Hizmet Türü" data-en="Service Type">Hizmet Türü</label>
@@ -617,34 +655,57 @@
 
     btn.disabled = true;
     btn.textContent = isEn ? 'Sending...' : 'Gönderiliyor...';
+    status.style.display = 'none';
+
+    // Telefon: alan kodu + numara birleştir
+    const phoneCode = document.getElementById('phone-code').value.replace('-CA', '');
+    const phoneNum = document.getElementById('ph-phone').value.trim();
+    const formData = new FormData(this);
+    if (phoneNum) {
+      formData.set('phone', phoneCode + ' ' + phoneNum);
+    }
+    formData.delete('phone_code');
+    formData.delete('phone_number');
 
     try {
       const res = await fetch('https://formspree.io/f/meebapoq', {
         method: 'POST',
         headers: { 'Accept': 'application/json' },
-        body: new FormData(this)
+        body: formData
       });
 
+      const data = await res.json();
+
       if (res.ok) {
+        // Başarı: formu tamamen temizle
+        this.reset();
+        document.getElementById('phone-code').value = '+90';
+        document.getElementById('ph-phone').value = '';
+        document.getElementById('ph-email').value = '';
+        document.getElementById('ph-name').value = '';
+        document.getElementById('ph-company').value = '';
+        document.getElementById('ph-msg').value = '';
+        document.getElementById('service-select').selectedIndex = 0;
+
         status.style.display = 'block';
         status.style.background = 'rgba(52,168,83,0.15)';
         status.style.border = '1px solid rgba(52,168,83,0.4)';
         status.style.color = '#4caf50';
         status.textContent = isEn
-          ? 'Your message has been received. We will contact you as soon as possible.'
-          : 'Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.';
-        this.reset();
+          ? '✓ Your message has been received. We will contact you as soon as possible.'
+          : '✓ Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.';
       } else {
-        throw new Error('server error');
+        const errMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'server error';
+        throw new Error(errMsg);
       }
-    } catch {
+    } catch (err) {
       status.style.display = 'block';
       status.style.background = 'rgba(192,57,43,0.15)';
       status.style.border = '1px solid rgba(192,57,43,0.4)';
       status.style.color = '#e74c3c';
       status.textContent = isEn
-        ? 'An error occurred. Please try again or call us directly.'
-        : 'Bir hata oluştu. Lütfen tekrar deneyin veya bizi arayın.';
+        ? '✗ An error occurred. Please try again or call us: 0212 564 56 58'
+        : '✗ Bir hata oluştu. Tekrar deneyin veya bizi arayın: 0212 564 56 58';
     } finally {
       btn.disabled = false;
       btn.textContent = isEn ? 'Send' : 'Gönder';
