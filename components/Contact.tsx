@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useLang } from './LangProvider';
 
 const phoneCodes = [
@@ -34,41 +34,16 @@ const phoneCodes = [
 export default function Contact() {
   const { lang } = useLang();
   const t = (tr: string, en: string) => lang === 'tr' ? tr : en;
-  const formRef = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const phoneHiddenRef = useRef<HTMLInputElement>(null);
   const [phoneCode, setPhoneCode] = useState('+90');
   const [phoneNum, setPhoneNum] = useState('');
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus('sending');
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    if (phoneNum) {
-      formData.set('phone', `${phoneCode} ${phoneNum}`);
+  function handleSubmit() {
+    // Combine country code + number into the hidden "phone" field before POST
+    if (phoneHiddenRef.current) {
+      phoneHiddenRef.current.value = phoneNum ? `${phoneCode} ${phoneNum}` : '';
     }
-    formData.delete('phone_code');
-    formData.delete('phone_number');
-
-    try {
-      const res = await fetch('https://formspree.io/f/meebapoq', {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: formData,
-      });
-      if (res.ok) {
-        setStatus('success');
-        form.reset();
-        setPhoneCode('+90');
-        setPhoneNum('');
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+    // No preventDefault — form submits natively to Formspree
   }
 
   return (
@@ -104,8 +79,18 @@ export default function Contact() {
             </div>
           </div>
           <div>
-            <form ref={formRef} className="contact-form" onSubmit={handleSubmit}>
+            <form
+              action="https://formspree.io/f/meebapoq"
+              method="POST"
+              className="contact-form"
+              onSubmit={handleSubmit}
+            >
+              {/* Formspree helpers */}
               <input type="hidden" name="_subject" value="Melz Gümrük — Yeni Talep" />
+              <input type="hidden" name="_next" value="https://www.melzgumruk.com/?sent=1" />
+              {/* Combined phone value set by handleSubmit before POST */}
+              <input type="hidden" name="phone" ref={phoneHiddenRef} />
+
               <div className="form-row">
                 <div className="form-group">
                   <label>{t('Adınız', 'Your Name')}</label>
@@ -124,7 +109,6 @@ export default function Contact() {
                 <label>{t('Telefon', 'Phone')}</label>
                 <div className="phone-field">
                   <select
-                    name="phone_code"
                     value={phoneCode}
                     onChange={(e) => setPhoneCode(e.target.value)}
                     aria-label={t('Ülke kodu', 'Country code')}
@@ -135,7 +119,6 @@ export default function Contact() {
                   </select>
                   <input
                     type="tel"
-                    name="phone_number"
                     value={phoneNum}
                     onChange={(e) => setPhoneNum(e.target.value)}
                     placeholder={t('5XX XXX XX XX', 'Your phone number')}
@@ -145,7 +128,7 @@ export default function Contact() {
               <div className="form-group">
                 <label>{t('Hizmet Türü', 'Service Type')}</label>
                 <select name="service">
-                  <option>{t('Seçiniz...', 'Select...')}</option>
+                  <option value="">{t('Seçiniz...', 'Select...')}</option>
                   <option>{t('Gümrük Müşavirliği', 'Customs Consultancy')}</option>
                   <option>{t('Lojistik', 'Logistics')}</option>
                   <option>{t('Antrepo', 'Warehousing')}</option>
@@ -160,19 +143,9 @@ export default function Contact() {
                   placeholder={t('Talebinizi kısaca açıklayın...', 'Briefly describe your request...')}
                 />
               </div>
-              <button type="submit" className="submit-btn" disabled={status === 'sending'}>
-                {status === 'sending' ? t('Gönderiliyor...', 'Sending...') : t('Gönder', 'Send')}
+              <button type="submit" className="submit-btn">
+                {t('Gönder', 'Send')}
               </button>
-              {status === 'success' && (
-                <div className="form-status success">
-                  {t('✓ Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.', '✓ Your message has been received. We will contact you as soon as possible.')}
-                </div>
-              )}
-              {status === 'error' && (
-                <div className="form-status error">
-                  {t('✗ Bir hata oluştu. Tekrar deneyin veya bizi arayın: 0212 564 56 58', '✗ An error occurred. Please try again or call us: 0212 564 56 58')}
-                </div>
-              )}
             </form>
           </div>
         </div>
