@@ -98,6 +98,7 @@ body { font-family: 'Barlow', sans-serif; background: var(--navy); color: var(--
 /* WHY */
 .why-section { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); }
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.why-grid--single { grid-template-columns: 1fr; max-width: 780px; }
 .why-visual { position: relative; height: 440px; }
 .why-map-bg { position: absolute; inset: 0; border: 1px solid rgba(26,79,138,0.12); border-radius: 16px; overflow: hidden; }
 .why-map-bg video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) saturate(1.05); }

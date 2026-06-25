@@ -9,15 +9,7 @@ export default function WhyMelz() {
   return (
     <section id="why" className="site-section why-section">
       <div className="section-inner">
-        <div className="why-grid">
-          <div className="why-visual">
-            <div className="why-map-bg">
-              <video autoPlay muted loop playsInline preload="none" style={{ background: '#0a1628' }}>
-                <source src="/10343918-hd_1920_1080_24fps.webm" type="video/webm" />
-                <source src="/10343918-hd_1920_1080_24fps.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </div>
+        <div className="why-grid why-grid--single">
           <div>
             <p className="section-label">{t('Neden Melz', 'Why Melz')}</p>
             <h2 className="section-title">{t('Küresel Ağ, Yerel Güç', 'Global Network, Local Strength')}</h2>
@@ -63,5 +55,6 @@ export default function WhyMelz() {
         </div>
       </div>
     </section>
+
   );
 }
