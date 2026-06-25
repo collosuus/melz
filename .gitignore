@@ -1,0 +1,5 @@
+# Büyük video dosyaları (GitHub 100MB limitini aşar)
+*.mp4
+*.mov
+*.avi
+*.mkv
