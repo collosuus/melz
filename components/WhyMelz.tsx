@@ -13,7 +13,7 @@ export default function WhyMelz() {
         <div className="why-grid why-grid--single">
           <div>
             <p className="section-label">{t('Melz Hakkımızda', 'About Melz', '关于Melz')}</p>
-            <h2 className="section-title">{t('Küresel Ağ, Yerel Güç', 'Global Network, Local Strength', '全球网络，本地实力')}</h2>
+            <h2 className="section-title">{t('Güvenilir Çözüm Ortağınız', 'Your Trusted Solution Partner', '您值得信赖的解决方案伙伴')}</h2>
             <div className="why-features">
               <div className="why-feat">
                 <div className="why-feat-icon">⚡</div>
