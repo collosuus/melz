@@ -4,7 +4,7 @@ import { useLang } from './LangProvider';
 
 export default function Hero() {
   const { lang } = useLang();
-  const t = (tr: string, en: string) => lang === 'tr' ? tr : en;
+  const t = (tr: string, en: string, zh: string) => lang === 'tr' ? tr : lang === 'en' ? en : zh;
 
   return (
     <section id="hero">
@@ -30,24 +30,25 @@ export default function Hero() {
       <div className="hero-content">
         <div className="hero-badge">
           <span className="dot" />
-          <span>{t('Gümrük Çözümleri', 'Global Customs Solutions')}</span>
+          <span>{t('Gümrük Çözümleri', 'Global Customs Solutions', '全球报关解决方案')}</span>
         </div>
         <h1 className="hero-title">
-          <span>{t('Dünyanın Her Yerinden', 'From Every Corner')}</span>
-          <em>{t('Hızla & Güvenle', 'Fast & Secure')}</em>
+          <span>{t('Dünyanın Her Yerinden', 'From Every Corner', '连接世界各地')}</span>
+          <em>{t('Hızla & Güvenle', 'Fast & Secure', '快速 安全')}</em>
         </h1>
         <p className="hero-desc">
           {t(
             'Melz Gümrük Müşavirliği olarak ithalat ve ihracat süreçlerinizi uçtan uca yönetiyor, küresel ticaretinizi kolaylaştırıyoruz. İstanbul merkezli, dünya genelinde operasyon.',
             'Melz Customs Consultancy manages your import and export processes end-to-end, facilitating your global trade. Istanbul-based, operating worldwide.',
+            'Melz报关咨询公司为您全程管理进出口流程，助力您的全球贸易。总部位于伊斯坦布尔，业务遍及全球。',
           )}
         </p>
         <div className="hero-actions">
           <a href="#contact" className="btn-primary">
-            {t('Hemen Teklif Alın', 'Get a Quote')}
+            {t('Hemen Teklif Alın', 'Get a Quote', '立即获取报价')}
           </a>
           <a href="#services" className="btn-secondary">
-            {t('Hizmetlerimiz', 'Our Services')}
+            {t('Hizmetlerimiz', 'Our Services', '我们的服务')}
           </a>
         </div>
       </div>

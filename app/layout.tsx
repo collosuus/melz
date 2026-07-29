@@ -1,19 +1,12 @@
 import type { Metadata } from 'next';
-import { Barlow, Barlow_Condensed } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
 import LangProvider from '@/components/LangProvider';
 
-const barlow = Barlow({
+const inter = Inter({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-barlow',
-  display: 'swap',
-});
-
-const barlowCondensed = Barlow_Condensed({
-  subsets: ['latin'],
-  weight: ['300', '400', '600', '700', '800'],
-  variable: '--font-barlow-condensed',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-inter',
   display: 'swap',
 });
 
@@ -110,14 +103,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="tr" className={`${barlow.variable} ${barlowCondensed.variable}`}>
+    <html lang="tr" className={inter.variable}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body style={{ fontFamily: 'Barlow, sans-serif' }}>
+      <body style={{ fontFamily: 'var(--font-inter), sans-serif' }}>
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
