@@ -38,8 +38,11 @@ export const metadata: Metadata = {
     images: ['/melz-logo-footer-large-500x160.png'],
   },
   icons: {
-    icon: '/melz-logo-header-small-160x50.png',
-    apple: '/melz-logo-header-standard-240x75.png',
+    icon: [
+      { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
+      { url: '/icon.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: '/apple-icon.png',
   },
   verification: {
     google: 'xAE0OqPBM1j3p4AINiCSN7DiqFb1-J8sHmodK7S4LXc',
