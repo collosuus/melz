@@ -60,6 +60,9 @@ export default function Navbar() {
             中文
           </button>
         </div>
+        <a href="https://www.ironarmlog.com" target="_blank" rel="noopener noreferrer" className="nav-partner">
+          IRONARM {t('LOJİSTİK', 'LOGISTICS', '物流')}
+        </a>
         <a href="/#contact" className="nav-cta">{t('Teklif Alın', 'Get a Quote', '获取报价')} →</a>
       </div>
     </nav>
