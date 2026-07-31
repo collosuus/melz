@@ -157,32 +157,14 @@ export default function AdminClient() {
             <input type="text" name="name" required placeholder="Örn. Ahmet Yılmaz" />
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label>Unvan (TR)</label>
-              <input type="text" name="title_tr" required placeholder="Örn. Gümrük Müşaviri" />
-            </div>
-            <div className="form-group">
-              <label>Unvan (EN)</label>
-              <input type="text" name="title_en" required placeholder="e.g. Customs Advisor" />
-            </div>
-          </div>
           <div className="form-group">
-            <label>Unvan (ZH)</label>
-            <input type="text" name="title_zh" required placeholder="例：报关顾问" />
+            <label>Unvan</label>
+            <input type="text" name="title" placeholder="Örn. Gümrük Müşaviri" />
           </div>
 
           <div className="form-group">
-            <label>Deneyim / Bio (TR)</label>
-            <textarea name="bio_tr" placeholder="Kısa deneyim özeti..." />
-          </div>
-          <div className="form-group">
-            <label>Deneyim / Bio (EN)</label>
-            <textarea name="bio_en" placeholder="Short experience summary..." />
-          </div>
-          <div className="form-group">
-            <label>Deneyim / Bio (ZH)</label>
-            <textarea name="bio_zh" placeholder="简要经验介绍..." />
+            <label>Deneyim</label>
+            <textarea name="bio" placeholder="Kısa deneyim özeti..." />
           </div>
 
           <div className="form-group">

@@ -17,21 +17,12 @@ export async function POST(request: NextRequest) {
 
   const formData = await request.formData();
   const name = formData.get('name');
-  const titleTr = formData.get('title_tr');
-  const titleEn = formData.get('title_en');
-  const titleZh = formData.get('title_zh');
-  const bioTr = formData.get('bio_tr') ?? '';
-  const bioEn = formData.get('bio_en') ?? '';
-  const bioZh = formData.get('bio_zh') ?? '';
+  const title = (formData.get('title') as string | null) ?? '';
+  const bio = (formData.get('bio') as string | null) ?? '';
   const photo = formData.get('photo');
 
-  if (
-    typeof name !== 'string' || !name.trim() ||
-    typeof titleTr !== 'string' || !titleTr.trim() ||
-    typeof titleEn !== 'string' || !titleEn.trim() ||
-    typeof titleZh !== 'string' || !titleZh.trim()
-  ) {
-    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+  if (typeof name !== 'string' || !name.trim()) {
+    return NextResponse.json({ error: 'Name is required' }, { status: 400 });
   }
 
   let photoUrl: string | null = null;
@@ -44,7 +35,7 @@ export async function POST(request: NextRequest) {
 
   const rows = await sql`
     INSERT INTO team_members (name, title_tr, title_en, title_zh, bio_tr, bio_en, bio_zh, photo_url)
-    VALUES (${name.trim()}, ${titleTr.trim()}, ${titleEn.trim()}, ${titleZh.trim()}, ${bioTr as string}, ${bioEn as string}, ${bioZh as string}, ${photoUrl})
+    VALUES (${name.trim()}, ${title.trim()}, ${title.trim()}, ${title.trim()}, ${bio.trim()}, ${bio.trim()}, ${bio.trim()}, ${photoUrl})
     RETURNING *
   `;
 
