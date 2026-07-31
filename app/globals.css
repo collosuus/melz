@@ -285,6 +285,35 @@ body { font-family: var(--font); background: var(--navy); color: var(--white); o
 .blog-listing-card h2 { font-family: var(--font); font-size: 22px; font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; margin-bottom: 12px; color: var(--white); }
 .blog-listing-footer { padding: 20px 28px; border-top: 1px solid var(--border); margin-top: 20px; display: flex; align-items: center; justify-content: space-between; }
 
+/* TEAM PAGE */
+.team-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.team-card { background: linear-gradient(160deg, rgba(255,255,255,0.045), rgba(255,255,255,0.015)); border: 1px solid var(--border); border-radius: 20px; padding: 32px 28px; text-align: center; transition: all 0.3s; backdrop-filter: blur(6px); }
+.team-card:hover { border-color: rgba(232,160,32,0.3); transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.22); }
+.team-photo { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; display: block; border: 2px solid var(--border); }
+.team-photo-placeholder { width: 96px; height: 96px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--blue), var(--accent)); font-family: var(--font); font-weight: 800; font-size: 28px; color: var(--white); }
+.team-name { font-family: var(--font); font-size: 19px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; color: var(--white); }
+.team-title { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.team-bio { font-size: 14px; font-weight: 400; line-height: 1.65; color: rgba(255,255,255,0.6); }
+
+/* ADMIN PAGE */
+.admin-wrap { max-width: 900px; margin: 0 auto; padding: 60px 5% 100px; }
+.admin-login { max-width: 380px; margin: 80px auto; text-align: center; }
+.admin-login h1 { font-family: var(--font); font-size: 28px; font-weight: 800; margin-bottom: 24px; }
+.admin-panel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; gap: 16px; flex-wrap: wrap; }
+.admin-logout-btn { padding: 9px 20px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 100px; color: var(--white); font-family: var(--font); font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.admin-logout-btn:hover { border-color: var(--accent); color: var(--accent-light); }
+.admin-section-title { font-family: var(--font); font-size: 20px; font-weight: 700; margin: 40px 0 16px; color: var(--white); }
+.admin-member-list { display: flex; flex-direction: column; gap: 12px; }
+.admin-member-row { display: flex; align-items: center; gap: 16px; padding: 14px 18px; background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 14px; }
+.admin-member-photo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.admin-member-photo-placeholder { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--blue), var(--accent)); display: flex; align-items: center; justify-content: center; font-family: var(--font); font-weight: 800; font-size: 15px; color: var(--white); }
+.admin-member-info { flex: 1; min-width: 0; }
+.admin-member-info strong { display: block; font-size: 14px; font-weight: 600; color: var(--white); }
+.admin-member-info span { font-size: 12px; color: var(--text-muted); }
+.admin-delete-btn { padding: 8px 16px; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 100px; color: var(--danger); font-family: var(--font); font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s; flex-shrink: 0; }
+.admin-delete-btn:hover { background: rgba(239,68,68,0.18); }
+.admin-empty { color: var(--text-muted); font-size: 14px; padding: 20px 0; }
+
 /* NAV: hamburger menu for phones and small tablets, in both portrait and landscape */
 @media(max-width:1024px) {
   .nav-links { display: none; }
@@ -314,6 +343,8 @@ body { font-family: var(--font); background: var(--navy); color: var(--white); o
   .footer-inner { flex-direction: column; text-align: center; }
   .site-section { padding: 64px 5%; }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .admin-panel-header { flex-direction: column; align-items: flex-start; }
   .trust-grid { grid-template-columns: repeat(2,1fr); }
   .blog-grid { grid-template-columns: 1fr; }
   .faq-grid { grid-template-columns: 1fr; }

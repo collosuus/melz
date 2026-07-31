@@ -44,6 +44,7 @@ export default function Navbar() {
       <ul className="nav-links">
         <li><a href="/#services">{t('Hizmetler', 'Services', '服务项目')}</a></li>
         <li><Link href="/hakkimizda">{t('Melz Hakkımızda', 'About Melz', '关于Melz')}</Link></li>
+        <li><Link href="/ekibimiz">{t('Ekibimiz', 'Our Team', '我们的团队')}</Link></li>
         <li><a href="/#faq">{t('SSS', 'FAQ', '常见问题')}</a></li>
         <li><Link href="/blog">{t('Blog', 'Blog', '博客')}</Link></li>
       </ul>
@@ -89,6 +90,7 @@ export default function Navbar() {
         <ul className="nav-mobile-links">
           <li><a href="/#services" onClick={closeMenu}>{t('Hizmetler', 'Services', '服务项目')}</a></li>
           <li><Link href="/hakkimizda" onClick={closeMenu}>{t('Melz Hakkımızda', 'About Melz', '关于Melz')}</Link></li>
+          <li><Link href="/ekibimiz" onClick={closeMenu}>{t('Ekibimiz', 'Our Team', '我们的团队')}</Link></li>
           <li><a href="/#faq" onClick={closeMenu}>{t('SSS', 'FAQ', '常见问题')}</a></li>
           <li><Link href="/blog" onClick={closeMenu}>{t('Blog', 'Blog', '博客')}</Link></li>
         </ul>
