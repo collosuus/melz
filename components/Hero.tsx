@@ -36,6 +36,16 @@ export default function Hero() {
           <span>{t('Dünyanın Her Yerinden', 'From Every Corner', '连接世界各地')}</span>
           <em>{t('Hızla & Güvenle', 'Fast & Secure', '快速 安全')}</em>
         </h1>
+        <h2 className="hero-subtitle">
+          {t('Güvenilir Çözüm Ortağınız', 'Your Trusted Solution Partner', '您值得信赖的解决方案伙伴')}
+        </h2>
+        <p className="hero-subtitle-desc">
+          {t(
+            'Stratejik, sonuç ve müşteri memnuniyeti odaklı yaklaşımlarımız ile global ve ulusal alanda sektörün öncü şirketi konumundayız.',
+            'With our strategic, results- and customer satisfaction-focused approach, we stand as an industry leader both locally and globally.',
+            '凭借以战略、成果和客户满意度为导向的方法，我们在国内外市场均处于行业领先地位。',
+          )}
+        </p>
         <p className="hero-desc">
           {t(
             'Melz Gümrük Müşavirliği olarak ithalat ve ihracat süreçlerinizi uçtan uca yönetiyor, küresel ticaretinizi kolaylaştırıyoruz. İstanbul merkezli, dünya genelinde operasyon.',
