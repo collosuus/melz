@@ -15,9 +15,9 @@ export default function WhyMelz() {
             <p className="section-label">{t('Melz Hakkımızda', 'About Melz', '关于Melz')}</p>
             <h2 className="section-title">
               {t(
-                'Stratejik, sonuç ve müşteri memnuniyeti odaklı yaklaşımlarımız ile global ve ulusal alanda sektörün öncü şirketi konumundayız.',
-                'With our strategic, results- and customer satisfaction-focused approach, we stand as an industry leader both locally and globally.',
-                '凭借以战略、成果和客户满意度为导向的方法，我们在国内外市场均处于行业领先地位。',
+                'Global ve ulusal alanda sektörün öncü şirketiyiz.',
+                'We are the industry leader, both locally and globally.',
+                '我们是国内外市场的行业领导者。',
               )}
             </h2>
             <p className="section-desc">
